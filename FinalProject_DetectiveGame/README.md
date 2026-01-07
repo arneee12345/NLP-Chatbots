@@ -27,6 +27,9 @@ This project uses spaCy's medium English model (`en_core_web_md`) for vector sim
 python -m spacy download en_core_web_md
 ```
 
+## 📚 Detailed Documentation
+For a comprehensive breakdown of the development process and the logic sketch please see the **[Project/Process Documentation](FinalProject_DetectiveGame/docs/DOCUMENTATION.md)**.
+
 ## 🚀 How to Run
 To start the investigation, simply run the main script:
 
