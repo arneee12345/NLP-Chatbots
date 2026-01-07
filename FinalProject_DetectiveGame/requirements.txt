@@ -1,0 +1,5 @@
+# Core NLP library
+spacy>=3.7.0
+
+# Terminal UI/Colors
+rich>=13.0.0
