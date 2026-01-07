@@ -13,7 +13,7 @@ except ImportError:
 
 # Custom modules
 from src.suspect_data import load_suspects
-from src.nlp import DetectiveBrain  # Changed from NLPProcessor
+from src.nlp import DetectiveBrain  
 from src.story import INTRO_TEXT, CASE_TITLE, SOLUTION
 
 def clear_screen():
@@ -26,7 +26,7 @@ def main():
     else:
         console = None
         
-    # Initialize the "Brain" (Renamed from NLPProcessor)
+    # Initialize the "Brain"
     brain = DetectiveBrain()
     
     # 1. Load Data
