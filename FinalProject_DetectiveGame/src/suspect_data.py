@@ -1,124 +1,44 @@
+import json
+import os
 from .models import Suspect, KnowledgeBase
 
-def load_suspects():
-    # TODO: Add more dialogue options if I have time before the deadline
-    
-    # --- Suspect 1: Alfred ---
-    alfred_story = """
-    I have served this family for 30 years as a loyal butler.
-    I found the master's body in the study at 9:00 PM when I brought his tea.
-    I was polishing the silver in the kitchen all evening, so I was working hard.
-    At 8:30 PM, I stepped outside for a quick smoke break near the garden.
-    I did not see anyone else enter or leave the study, the hallway was empty.
-    I noticed the antique letter opener was missing from the desk yesterday.
-    I admit, I was worried about my pension because nothing was in writing.
-    Master Julian is reckless and has a terrible temper, he has been shouting for weeks.
-    Ms. Veronica is a cold and terrifying woman, I saw her arguing with the master.
-    I would never hurt the master, he was like family to me.
+def load_suspects(filename="data/scenario_01.json"):
     """
-    
-    butler = Suspect(
-        id="butler",
-        name="Alfred The Butler",
-        bio="A nervous, twitchy man who has served the family for 30 years.",
-        personality_style="formal_nervous",
-        knowledge=KnowledgeBase(), 
-        story_text=alfred_story.strip(),
-        timeline={
-            "18:00": "At 6 PM? I was setting the table. I saw Ms. Veronica arguing with the master.",
-            "19:00": "At 7 PM, I went to the kitchen to begin polishing the silver.",
-            "20:00": "At 8 PM, I was still in the kitchen polishing the cutlery.",
-            "20:30": "At 8:30... I stepped out to the garden for a quick smoke.",
-            "21:00": "At 9 PM exactly, I brought the master his tea. That is when I found the body!",
-            "22:00": "By 10 PM I was with the police, giving my official statement.",
-            "23:00": "At 11 PM, I was sitting in the library, waiting for the inspector.",
-            "00:00": "By midnight, I was sent to my quarters."
-        },
-        prefixes=["If I recall...", "Well...", "Let me think...", "To answer you..."],
-        suffixes=["...and that is the truth.", "...I swear it.", "...believe me."],
-        defense_statement="Oh heavens no! I could never hurt the master!",
-        fallback_statement="I don't recall that specific detail."
-    )
-    # used to stop him repeating the same sentence
-    butler.last_match = None
-
-    # --- Suspect 2: Julian ---
-    julian_story = """
-    I don't care that he is dead, the old man was sick and cruel.
-    I was out at the Sapphire Club downtown drinking with friends.
-    The bartender at the Sapphire Club can vouch for me, I was there all night.
-    Okay, I came back to the house around 8:00 PM but I stayed in the garden.
-    I waited in the garden because I wanted to ask him for money, but I lost my nerve.
-    I assume I get the inheritance money now? It is about time I got my share.
-    I owe some bad people a lot of money and I needed the cash to pay my gambling debts.
-    I did not kill him! I don't touch sharp objects or weapons.
-    If anyone is the killer, it is Veronica. She is a shark and wanted the company.
-    Old Alfred is just annoying and twitchy, he has been stealing wine from the cellar.
+    Parses the JSON scenario file and initializes Suspect objects.
     """
+    # Construct absolute path to the data file
+    base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    file_path = os.path.join(base_path, filename)
 
-    heir = Suspect(
-        id="heir",
-        name="Julian The Heir",
-        bio="Arrogant, wealthy, and seemingly unbothered by the death.",
-        personality_style="arrogant_dismissive",
-        knowledge=KnowledgeBase(),
-        story_text=julian_story.strip(),
-        timeline={
-            "18:00": "At 6 PM I was getting dressed. I heard Veronica yelling at my father.",
-            "19:00": "I left for the Sapphire Club downtown. I needed a stiff drink.",
-            "20:00": "At 8 PM? I... well, I told the police I was at the club.",
-            "20:30": "Fine. At 8:30 I was in the garden. I wanted to ask for money, but I didn't go in.",
-            "21:00": "I heard a scream from the house at 9 PM. I panicked and drove away.",
-            "22:00": "I was back at the club by 10, trying to establish an alibi.",
-            "23:00": "At 11 I was winning at poker. Or losing. I don't remember.",
-            "00:00": "Midnight? I was still drinking."
-        },
-        prefixes=["Look...", "Fine...", "Whatever...", "Here is the truth...", "Ugh..."],
-        suffixes=["...happy now?", "...you understand?", "...so stop asking.", "...got it?"],
-        is_guilty=True,
-        defense_statement="Don't be ridiculous. I have better things to do than get my hands dirty.",
-        fallback_statement="What are you babbling about? Ask me about the money or the club."
-    )
-    heir.last_match = None
+    try:
+        with open(file_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except FileNotFoundError:
+        print(f"Error: Scenario file not found at {file_path}")
+        return []
 
-    # --- Suspect 3: Veronica ---
-    veronica_story = """
-    This death is a tragedy, but mostly because it is bad for business.
-    I was working on a conference call with Tokyo from 8:00 PM to 10:00 PM.
-    I don't need his money, I have my own empire and fortune.
-    We were partners, his death actually complicates the merger we were planning.
-    I saw a letter opener on his desk earlier, it looked dangerous.
-    That boy Julian is a disaster, he is drowning in gambling debt.
-    Alfred the butler is a nervous wreck, he was terrified of losing his pension.
-    The master had files on my offshore accounts and I wanted them back.
-    I went to the study at 8:45 PM to get the files, but he was already dead.
-    I was not angry with him, we were simply having a spirited business negotiation.
-    I did not see anyone else enter the wing, it was completely quiet.
-    I suspect Julian is the killer, he has the motive and the temper.
-    """
+    loaded_suspects = []
 
-    veronica = Suspect(
-        id="veronica",
-        name="Veronica The Partner",
-        bio="Sharp, cold, and calculated. A high-powered executive.",
-        personality_style="cold_analytical",
-        knowledge=KnowledgeBase(),
-        story_text=veronica_story.strip(),
-        timeline={
-            "18:00": "I had a disagreement with the deceased regarding the merger terms.",
-            "19:00": "I was preparing for my scheduled conference call in my room.",
-            "20:00": "At 8 PM, I started the call in my guest room.",
-            "20:45": "At 8:45, I took a brief break to go to the study. He was already dead.",
-            "21:00": "At 9 PM I was back on the call. Professionalism is key.",
-            "22:00": "I finished the call and went to see what the commotion was about.",
-            "23:00": "I was reviewing the merger files in my room.",
-            "00:00": "I was asleep."
-        },
-        prefixes=["Listen...", "The facts are...", "Logically speaking...", "To be precise..."],
-        suffixes=["...check the logs.", "...that is my alibi.", "...does that clarify things?", "...simple as that."],
-        defense_statement="Killing him would be a poor strategic move. I am innocent.",
-        fallback_statement="That question is irrelevant to the business at hand."
-    )
-    veronica.last_match = None
+    for s_data in data["suspects"]:
+        # Join sentence list into a single text block for NLP vectorization
+        full_story_text = " ".join(s_data["knowledge_sentences"])
 
-    return [butler, heir, veronica]
+        new_suspect = Suspect(
+            id=s_data["id"],
+            name=s_data["name"],
+            bio=s_data["bio"],
+            personality_style=s_data["personality_style"],
+            knowledge=KnowledgeBase(), 
+            story_text=full_story_text,
+            timeline=s_data["timeline"],
+            prefixes=s_data["prefixes"],
+            suffixes=s_data["suffixes"],
+            defense_statement=s_data["defense_statement"],
+            fallback_statement=s_data["fallback_statement"],
+            is_guilty=s_data.get("is_guilty", False)
+        )
+        
+        new_suspect.last_match = None
+        loaded_suspects.append(new_suspect)
+
+    return loaded_suspects

@@ -127,7 +127,7 @@ def interrogate_suspect(console, brain, suspect):
         if user_input.lower() in ["back", "return", "exit"]:
             break
             
-        # Call the NLP logic (Updated method name: parse)
+        # Call the NLP logic 
         response = brain.parse(user_input, suspect)
         
         if HAS_RICH:
@@ -139,5 +139,5 @@ if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
-        # Quit gracefully on Ctrl+C
+        # Quit instantly on Ctrl+C
         sys.exit(0)

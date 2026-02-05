@@ -6,7 +6,9 @@
 ## 📝 Project Description
 This is an interactive text-based murder mystery game that explores the potential of Natural Language Processing (NLP) in narrative gaming. Unlike traditional adventure games that rely on rigid, pre-defined dialogue trees (where players just select A, B, or C), this project utilizes the `spaCy` library to allow players to interrogate suspects using open-ended natural language questions.
 
-The core technical challenge was implementing a **cosine similarity algorithm** that matches user input against a predefined knowledge base. This allows the game to understand the *intent* of a question (e.g., matching "Where were you?" with "I was in the garden") rather than relying on exact string matching. The game features three suspects. The Nervous Butler, the Arrogant Heir, and the Cold Partner. Each with unique linguistic patterns and alibis. I also integrated the `Rich` library for a the terminal visualization to make the user experience a little more game like.
+The core technical challenge was implementing the **cosine similarity** that matches user input against a predefined knowledge base. This allows the game to understand the *intent* of a question (e.g., matching "Where were you?" with "I was in the garden") rather than relying on exact string matching. 
+The game features three suspects. The Nervous Butler, the Arrogant Heir, and the Cold Partner. Each with unique linguistic patterns and alibis.
+I also integrated the `Rich` library for a the terminal visualization to make the user experience a little more game like.
 
 ---
 
@@ -65,3 +67,15 @@ When you think you know the truth:
 * **Python:** Core logic and game loop management.
 * **spaCy:** Natural Language Processing (Tokenization, Lemmatization, Cosine Similarity) for dialogue matching.
 * **Rich:** Library for terminal formatting, colors, and panels to create an immersive UI.
+
+
+
+TODOS:
+"Willingness to talk" score for suspects - drops if insulted or repeatedly asked the same question or accused falsely
+dynamic storylines (with ChatGPT or Gemini API) - different generated story each time (suspects, lvls, genres)
+generate random but matching answers instead of predefined answers
+accusing only later in game
+only specific number of questions/turns and scoring system (leaderboard whatever)
+test with someone who doesnt know "how" to ask
+get data and stories out of coding flow (structure better) especially for 
+more storyline and dialogue after accusing instead of just exiting gmae
