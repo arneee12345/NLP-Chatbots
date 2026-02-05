@@ -5,29 +5,29 @@ class KnowledgeBase:
         self.secrets = {}
 
 class Suspect:
-    def __init__(self, id, name, bio, personality_style, knowledge, story_text, timeline, prefixes=None, suffixes=None, defense_statement="I didn't do it!", fallback_statement="I don't understand.", is_guilty=False):
+    def __init__(self, id, name, bio, personality_style, knowledge, story_text, timeline, prefixes, suffixes, defense_statement, fallback_statement, is_guilty=False):
         self.id = id
         self.name = name
         self.bio = bio
         self.personality_style = personality_style
         self.knowledge = knowledge
-        
-        # Timeline: {"19:00": "I was...", "20:00": "I went..."}
-        self.timeline = timeline
-        
         self.story_text = story_text
-        
-        # Lists for randomizing speech
-        self.prefixes = prefixes if prefixes else []
-        self.suffixes = suffixes if suffixes else []
-        
+        self.timeline = timeline
+        self.prefixes = prefixes
+        self.suffixes = suffixes
         self.defense_statement = defense_statement
         self.fallback_statement = fallback_statement
-        
         self.is_guilty = is_guilty
         
-        # Used to remember what they said last (avoids repetition)
+        # Game State
         self.last_match = None
+        self.willingness = 100  # Starts at 100%
+
+    def decrease_willingness(self, amount):
+        """Reduces willingness score, clamping it at 0."""
+        self.willingness -= amount
+        if self.willingness < 0:
+            self.willingness = 0
 
     def __repr__(self):
         return f"<Suspect: {self.name}>"

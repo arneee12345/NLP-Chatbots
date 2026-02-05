@@ -1,7 +1,7 @@
 import sys
 import os
 
-# "Safety first" imports - if rich isn't installed, we fall back to standard input/print
+# Rich for better terminal UI
 try:
     from rich.console import Console
     from rich.panel import Panel
@@ -11,7 +11,7 @@ except ImportError:
     HAS_RICH = False
     print("NOTE: Install 'rich' for better colors (pip install rich)")
 
-# Custom modules
+# Project modules
 from src.suspect_data import load_suspects
 from src.nlp import DetectiveBrain  
 from src.story import INTRO_TEXT, CASE_TITLE, SOLUTION
@@ -20,23 +20,21 @@ def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def main():
-    # Setup console only if we have the library
     if HAS_RICH:
         console = Console()
     else:
         console = None
         
-    # Initialize the "Brain"
+    # Initialize NLP engine
     brain = DetectiveBrain()
     
-    # 1. Load Data
+    # Load Scenario Data
     suspects = load_suspects()
     
-    # Debug check
     if len(suspects) < 3:
-        print("Warning: Suspects didn't load correctly.")
+        print("Warning: Suspect data incomplete.")
     
-    # 2. Intro Screen
+    # Intro Screen
     clear_screen()
     if HAS_RICH:
         console.print(Panel.fit(f"[bold cyan]{CASE_TITLE}[/bold cyan]", border_style="blue"))
@@ -49,11 +47,11 @@ def main():
         
     input() 
     
-    # 3. Main Game Loop
+    # Main Game Loop
     while True:
         clear_screen()
         
-        # Print menu
+        # Display Menu
         if HAS_RICH:
             console.print("[bold]SUSPECT LIST:[/bold]")
             for i, s in enumerate(suspects):
@@ -66,17 +64,17 @@ def main():
                 print(f"{i + 1}. {s.name}")
             choice = input("\nSelection (number/accuse/exit): ")
 
-        # Handle Exit
+        # Exit
         if choice.lower() in ["exit", "quit"]:
             print("Case closed (Unsolved).")
             break
             
-        # Handle Accusation
+        # Accusation Logic
         if choice.lower() == "accuse":
             print("\nWHO IS THE KILLER?")
             guess = input("Type the name: ")
             
-            # Simple check against the solution in story.py
+            # Check against solution
             if SOLUTION["killer"].lower() in guess.lower() or "julian" in guess.lower():
                 if HAS_RICH:
                     console.print(f"\n[bold green]CORRECT! {SOLUTION['killer']} is guilty![/bold green]")
@@ -92,7 +90,7 @@ def main():
                     print("\nWRONG! The killer got away...")
                 break
 
-        # Handle Suspect Selection
+        # Select Suspect
         if choice.isdigit():
             idx = int(choice) - 1
             if 0 <= idx < len(suspects):
@@ -106,7 +104,6 @@ def main():
             input("Press Enter...")
 
 def interrogate_suspect(console, brain, suspect):
-    # Sub-loop for talking to one specific person
     clear_screen()
     
     if HAS_RICH:
@@ -126,8 +123,40 @@ def interrogate_suspect(console, brain, suspect):
         
         if user_input.lower() in ["back", "return", "exit"]:
             break
+
+        # Willingness to talk logic
+        insults = ["idiot", "stupid", "dumb", "liar", "shut up", "ugly", "crazy"]
+        user_lower = user_input.lower()
+
+        is_pure_insult = any(word in user_lower for word in insults)
+        is_accusation = ("you" in user_lower) and any(verb in user_lower for verb in ["kill", "murder", "stab", "do it"])
+
+        if is_pure_insult or is_accusation:
+            suspect.decrease_willingness(15) 
+            if HAS_RICH:
+                if is_accusation:
+                    console.print(f"[bold red]! {suspect.name} gets defensive at the accusation.[/bold red] (Willingness: {suspect.willingness}%)")
+                else:
+                    console.print(f"[bold red]! {suspect.name} is offended by your language.[/bold red] (Willingness: {suspect.willingness}%)")
+            else:
+                print(f"! {suspect.name} looks offended. (Willingness: {suspect.willingness}%)")
+        
+        # Check Refusal
+        if suspect.willingness <= 0:
+            if HAS_RICH:
+                console.print(Panel(f"[red]{suspect.name}:[/red] I am done talking to you. Get out of my face!"))
+            else:
+                print(f"{suspect.name}: I am done talking to you. Get out of my face!")
+            continue 
             
-        # Call the NLP logic 
+        # Low Willingness Warning
+        if suspect.willingness < 40 and suspect.willingness > 0:
+            if HAS_RICH:
+                console.print(f"[italic dim]({suspect.name} seems reluctant to answer...)[/italic dim]")
+            else:
+                print(f"({suspect.name} seems reluctant to answer...)")
+
+        # Process NLP
         response = brain.parse(user_input, suspect)
         
         if HAS_RICH:
@@ -139,5 +168,4 @@ if __name__ == "__main__":
     try:
         main()
     except KeyboardInterrupt:
-        # Quit instantly on Ctrl+C
         sys.exit(0)
