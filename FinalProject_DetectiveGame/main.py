@@ -12,9 +12,8 @@ except ImportError:
     print("NOTE: Install 'rich' for better colors (pip install rich)")
 
 # Project modules
-from src.suspect_data import load_suspects
+from src.suspect_data import load_scenario
 from src.nlp import DetectiveBrain  
-from src.story import INTRO_TEXT, CASE_TITLE, SOLUTION
 
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -29,7 +28,17 @@ def main():
     brain = DetectiveBrain()
     
     # Load Scenario Data
-    suspects = load_suspects()
+    scenario_data = load_scenario()
+    
+    if not scenario_data:
+        print("Critical Error: Could not load scenario data.")
+        return
+
+    # Unpack data from JSON
+    suspects = scenario_data["suspects"]
+    meta = scenario_data["meta"]
+    outcomes = scenario_data["outcomes"]
+    solution = meta["solution"]
     
     if len(suspects) < 3:
         print("Warning: Suspect data incomplete.")
@@ -41,13 +50,13 @@ def main():
     # Intro Screen
     clear_screen()
     if HAS_RICH:
-        console.print(Panel.fit(f"[bold cyan]{CASE_TITLE}[/bold cyan]", border_style="blue"))
-        console.print(INTRO_TEXT)
+        console.print(Panel.fit(f"[bold cyan]{meta['title']}[/bold cyan]", border_style="blue"))
+        console.print(meta['intro_text'])
         console.print(f"\n[bold yellow]MISSION: Solve the case in {turns_left} turns.[/bold yellow]")
         console.print("[italic]Press Enter to enter the interrogation room...[/italic]")
     else:
-        print(f"--- {CASE_TITLE} ---")
-        print(INTRO_TEXT)
+        print(f"--- {meta['title']} ---")
+        print(meta['intro_text'])
         print(f"\nMISSION: Solve the case in {turns_left} turns.")
         print("\nPress Enter to begin...")
         
@@ -60,10 +69,11 @@ def main():
         # Check Game Over
         if turns_left <= 0:
             if HAS_RICH:
-                console.print("[bold red]GAME OVER: You ran out of time![/bold red]")
+                console.print(Panel(outcomes['timeout'], title="[bold red]GAME OVER[/bold red]", border_style="red"))
                 console.print(f"Final Score: {score}")
             else:
-                print("GAME OVER: You ran out of time!")
+                print("GAME OVER")
+                print(outcomes['timeout'])
                 print(f"Final Score: {score}")
             break
 
@@ -93,7 +103,7 @@ def main():
             guess = input("Type the name: ")
             
             # Check against solution
-            if SOLUTION["killer"].lower() in guess.lower() or "julian" in guess.lower():
+            if solution["killer"].lower() in guess.lower():
                 score += 500  # Win Bonus
                 
                 # Determine Rank
@@ -102,22 +112,26 @@ def main():
                 elif score > 800: rank = "Private Investigator"
 
                 if HAS_RICH:
-                    console.print(f"\n[bold green]CORRECT! {SOLUTION['killer']} is guilty![/bold green]")
+                    console.print(Panel(outcomes['success'], title="[bold green]CASE SOLVED[/bold green]", border_style="green"))
                     console.print(f"[bold yellow]FINAL SCORE: {score} ({rank})[/bold yellow]")
                 else:
-                    print(f"\nCORRECT! {SOLUTION['killer']} is guilty!")
+                    print("CASE SOLVED")
+                    print(outcomes['success'])
                     print(f"FINAL SCORE: {score} ({rank})")
                 
-                print(f"Motive: {SOLUTION['motive']}")
+                print(f"Motive: {solution['motive']}")
                 break
             else:
                 score -= 300 # Wrong guess penalty
                 if HAS_RICH:
-                    console.print("\n[bold red]WRONG! The killer got away...[/bold red] [-300 Points]")
+                    console.print(Panel(outcomes['failure'], title="[bold red]WRONG ACCUSATION[/bold red]", border_style="red"))
+                    console.print(f"[bold red]FINAL SCORE: {score}[/bold red]")
                 else:
-                    print("\nWRONG! The killer got away... [-300 Points]")
-                input("Press Enter...")
-                # We continue loop if turns are left
+                    print("WRONG ACCUSATION")
+                    print(outcomes['failure'])
+                    print(f"FINAL SCORE: {score}")
+                
+                break # Game Ends on failure
 
         # Select Suspect
         if choice.isdigit():
@@ -152,11 +166,7 @@ def interrogate_suspect(console, brain, suspect, turns_left, score):
     while True:
         # Force exit if out of turns
         if turns_left <= 0:
-            if HAS_RICH:
-                console.print("\n[bold red]TIME IS UP! The police are here.[/bold red]")
-            else:
-                print("\nTIME IS UP! The police are here.")
-            input("Press Enter...")
+            # Main loop handles the game over message
             break
 
         if HAS_RICH:

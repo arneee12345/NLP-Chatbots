@@ -1,6 +1,17 @@
 {
-  "title": "The Silent Estate",
-  "difficulty": "Normal",
+  "meta": {
+    "title": "The Silent Estate",
+    "intro_text": "The year is 1925. The wealthy industrialist Arthur Sterling has been found dead in his study.\nThree people were in the house.\n\nYou are the Detective. You have 30 turns to interrogate the suspects before the police arrive and take over the investigation.\n\nChoose your questions wisely. The suspects are sensitive and may clam up if you offend them.",
+    "solution": {
+      "killer": "Julian",
+      "motive": "Gambling debts and impatience for inheritance."
+    }
+  },
+  "outcomes": {
+    "success": "You signal the officers. They surround Julian, who breaks down in tears, confessing everything.\n'I didn't mean to! He wouldn't give me the money! It was an accident!'\n\nThe Chief Inspector nods at you. 'Good work, Detective. The Silent Estate is silent once more.'\n\n[CASE CLOSED - SUCCESS]",
+    "failure": "You point your finger, but your logic is flawed. The suspect has a solid alibi for that time.\nThe true killer slips away in the confusion.\n\nAs the police drag the wrong person away, you feel a cold breeze... the case will remain cold forever.\n\n[CASE CLOSED - FAILURE]",
+    "timeout": "The sirens wail outside. The Chief Inspector bursts in.\n'Time is up, Detective! We are taking everyone downtown.'\n\nYou failed to identify the killer in time. Arthur Sterling's death will go unsolved.\n\n[CASE CLOSED - TIMEOUT]"
+  },
   "suspects": [
     {
       "id": "butler",

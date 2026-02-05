@@ -2,11 +2,10 @@ import json
 import os
 from .models import Suspect, KnowledgeBase
 
-def load_suspects(filename="data/scenario_01.json"):
+def load_scenario(filename="data/scenario_01.json"):
     """
-    Parses the JSON scenario file and initializes Suspect objects.
+    Parses the JSON file and initializes Suspect objects and game metadata.
     """
-    # Construct absolute path to the data file
     base_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     file_path = os.path.join(base_path, filename)
 
@@ -15,12 +14,12 @@ def load_suspects(filename="data/scenario_01.json"):
             data = json.load(f)
     except FileNotFoundError:
         print(f"Error: Scenario file not found at {file_path}")
-        return []
+        return None
 
     loaded_suspects = []
 
     for s_data in data["suspects"]:
-        # Join sentence list into a single text block for NLP vectorization
+        # Flatten knowledge list for vectorization
         full_story_text = " ".join(s_data["knowledge_sentences"])
 
         new_suspect = Suspect(
@@ -41,4 +40,15 @@ def load_suspects(filename="data/scenario_01.json"):
         new_suspect.last_match = None
         loaded_suspects.append(new_suspect)
 
-    return loaded_suspects
+    return {
+        "meta": data.get("meta", {}),
+        "outcomes": data.get("outcomes", {}),
+        "suspects": loaded_suspects
+    }
+
+def load_suspects():
+    """
+    Wrapper for backward compatibility. Returns only the suspect list.
+    """
+    scenario = load_scenario()
+    return scenario["suspects"] if scenario else []
