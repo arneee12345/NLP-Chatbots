@@ -67,15 +67,3 @@ When you think you know the truth:
 * **Python:** Core logic and game loop management.
 * **spaCy:** Natural Language Processing (Tokenization, Lemmatization, Cosine Similarity) for dialogue matching.
 * **Rich:** Library for terminal formatting, colors, and panels to create an immersive UI.
-
-
-
-TODOS:
-"Willingness to talk" score for suspects - drops if insulted or repeatedly asked the same question or accused falsely
-dynamic storylines (with ChatGPT or Gemini API) - different generated story each time (suspects, lvls, genres)
-generate random but matching answers instead of predefined answers
-accusing only later in game
-only specific number of questions/turns and scoring system (leaderboard whatever)
-test with someone who doesnt know "how" to ask
-get data and stories out of coding flow (structure better) especially for 
-more storyline and dialogue after accusing instead of just exiting gmae
