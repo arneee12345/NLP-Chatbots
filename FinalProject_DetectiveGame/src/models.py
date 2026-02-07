@@ -1,8 +1,8 @@
-# simple class to hold facts
+# src/models.py
+
 class KnowledgeBase:
     def __init__(self):
         self.facts = {}
-        self.secrets = {}
 
 class Suspect:
     def __init__(self, id, name, bio, personality_style, knowledge, story_text, timeline, prefixes, suffixes, defense_statement, fallback_statement, is_guilty=False):

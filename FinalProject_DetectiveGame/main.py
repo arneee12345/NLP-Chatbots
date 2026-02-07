@@ -24,24 +24,30 @@ def main():
     else:
         console = None
         
+    clear_screen()
+    print("Initializing Detective AI System...")
+    
     # Initialize NLP engine
-    brain = DetectiveBrain()
-    
-    # Load Scenario Data
-    scenario_data = load_scenario()
-    
-    if not scenario_data:
-        print("Critical Error: Could not load scenario data.")
+    try:
+        brain = DetectiveBrain()
+    except Exception as e:
+        print(f"\nCRITICAL ERROR: Could not load NLP model. {e}")
         return
 
-    # Unpack data from JSON
+    # Load Generated Scenario Directly
+    print("Loading Generated Scenario...")
+    scenario_data = load_scenario("data/scenario_generated.json")
+    
+    if not scenario_data:
+        print("\n❌ FAILED: No generated story found.")
+        print("Please run 'python generate_story.py' to create a mystery first.")
+        return
+
+    # Unpack data
     suspects = scenario_data["suspects"]
     meta = scenario_data["meta"]
     outcomes = scenario_data["outcomes"]
     solution = meta["solution"]
-    
-    if len(suspects) < 3:
-        print("Warning: Suspect data incomplete.")
     
     # Game State
     turns_left = 30
@@ -77,7 +83,8 @@ def main():
                 print(f"Final Score: {score}")
             break
 
-        can_accuse = turns_left <= 15
+        can_accuse = turns_left <= 25 # Let them accuse earlier (turn 25 instead of 15)
+        
         # Display Menu
         if HAS_RICH:
             console.print(f"[bold yellow]TURNS: {turns_left} | SCORE: {score}[/bold yellow]")
@@ -88,7 +95,7 @@ def main():
             if can_accuse:
                 console.print("\n[dim]Options: Type number to talk, 'accuse' to solve, 'exit' to quit.[/dim]")
             else:
-                console.print(f"\n[dim]Options: Type number to talk. (Accusation unlocks in {turns_left - 15} turns)[/dim]")
+                console.print(f"\n[dim]Options: Type number to talk. (Accusation unlocks in {turns_left - 25} turns)[/dim]")
                 
             choice = Prompt.ask("Selection")
         else:
@@ -100,7 +107,7 @@ def main():
             if can_accuse:
                 print("\nOptions: Type number to talk, 'accuse' to solve.")
             else:
-                print(f"\nOptions: Type number to talk. (Accusation unlocks in {turns_left - 15} turns)")
+                print(f"\nOptions: Type number to talk.")
 
             choice = input("\nSelection: ")
         
@@ -116,9 +123,7 @@ def main():
             
             # Check against solution
             if solution["killer"].lower() in guess.lower():
-                score += 500  # Win Bonus
-                
-                # Determine Rank
+                score += 500
                 rank = "Rookie"
                 if score > 1200: rank = "Master Detective"
                 elif score > 800: rank = "Private Investigator"
@@ -134,7 +139,7 @@ def main():
                 print(f"Motive: {solution['motive']}")
                 break
             else:
-                score -= 300 # Wrong guess penalty
+                score -= 300 
                 if HAS_RICH:
                     console.print(Panel(outcomes['failure'], title="[bold red]WRONG ACCUSATION[/bold red]", border_style="red"))
                     console.print(f"[bold red]FINAL SCORE: {score}[/bold red]")
@@ -142,21 +147,18 @@ def main():
                     print("WRONG ACCUSATION")
                     print(outcomes['failure'])
                     print(f"FINAL SCORE: {score}")
-                
-                break # Game Ends on failure
+                break 
 
         # Select Suspect
         if choice.isdigit():
             idx = int(choice) - 1
             if 0 <= idx < len(suspects):
                 active_suspect = suspects[idx]
-                # Pass stats IN, get stats OUT
                 turns_left, score = interrogate_suspect(console, brain, active_suspect, turns_left, score)
             else:
                 print("Invalid number.")
                 input("Press Enter...")
         else:
-            # Handles non-digit inputs that aren't exit/accuse
             if choice.lower() not in ["accuse", "exit", "quit"]:
                 print("Invalid input.")
                 input("Press Enter...")
@@ -176,9 +178,7 @@ def interrogate_suspect(console, brain, suspect, turns_left, score):
         print("Type 'back' to return.\n")
     
     while True:
-        # Force exit if out of turns
         if turns_left <= 0:
-            # Main loop handles the game over message
             break
 
         if HAS_RICH:
@@ -193,41 +193,31 @@ def interrogate_suspect(console, brain, suspect, turns_left, score):
         turns_left -= 1
         score -= 10
 
-        # Willingness to talk logic
+        # Willingness logic
         insults = ["idiot", "stupid", "dumb", "liar", "shut up", "ugly", "crazy"]
         user_lower = user_input.lower()
-
         is_pure_insult = any(word in user_lower for word in insults)
+        
+        # Don't penalize accusations as much, it's part of the game
         is_accusation = ("you" in user_lower) and any(verb in user_lower for verb in ["kill", "murder", "stab", "do it"])
 
-        if is_pure_insult or is_accusation:
+        if is_pure_insult:
             suspect.decrease_willingness(15)
-            score -= 50 # Insult penalty
+            score -= 50
+            msg = f"! {suspect.name} is offended by your language."
             if HAS_RICH:
-                if is_accusation:
-                    console.print(f"[bold red]! {suspect.name} gets defensive at the accusation.[/bold red] (Willingness: {suspect.willingness}%)")
-                else:
-                    console.print(f"[bold red]! {suspect.name} is offended by your language.[/bold red] (Willingness: {suspect.willingness}%)")
-                console.print("[red][-50 Points][/red]")
+                console.print(f"[bold red]{msg}[/bold red]")
             else:
-                print(f"! {suspect.name} looks offended. (Willingness: {suspect.willingness}%)")
-                print("[-50 Points]")
+                print(msg)
         
-        # Check Refusal
         if suspect.willingness <= 0:
+            msg = f"{suspect.name}: I am done talking to you."
             if HAS_RICH:
-                console.print(Panel(f"[red]{suspect.name}:[/red] I am done talking to you. Get out of my face!"))
+                console.print(Panel(f"[red]{msg}[/red]"))
             else:
-                print(f"{suspect.name}: I am done talking to you. Get out of my face!")
+                print(msg)
             continue 
             
-        # Low Willingness Warning
-        if suspect.willingness < 40 and suspect.willingness > 0:
-            if HAS_RICH:
-                console.print(f"[italic dim]({suspect.name} seems reluctant to answer...)[/italic dim]")
-            else:
-                print(f"({suspect.name} seems reluctant to answer...)")
-
         # Process NLP
         response = brain.parse(user_input, suspect)
         
