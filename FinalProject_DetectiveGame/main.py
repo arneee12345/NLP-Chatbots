@@ -77,21 +77,33 @@ def main():
                 print(f"Final Score: {score}")
             break
 
+        can_accuse = turns_left <= 15
         # Display Menu
         if HAS_RICH:
             console.print(f"[bold yellow]TURNS: {turns_left} | SCORE: {score}[/bold yellow]")
             console.print("[bold]SUSPECT LIST:[/bold]")
             for i, s in enumerate(suspects):
                 console.print(f"{i + 1}. {s.name}")
-            console.print("\n[dim]Options: Type number to talk, 'accuse' to solve, 'exit' to quit.[/dim]")
+            
+            if can_accuse:
+                console.print("\n[dim]Options: Type number to talk, 'accuse' to solve, 'exit' to quit.[/dim]")
+            else:
+                console.print(f"\n[dim]Options: Type number to talk. (Accusation unlocks in {turns_left - 15} turns)[/dim]")
+                
             choice = Prompt.ask("Selection")
         else:
             print(f"TURNS: {turns_left} | SCORE: {score}")
             print("SUSPECT LIST:")
             for i, s in enumerate(suspects):
                 print(f"{i + 1}. {s.name}")
-            choice = input("\nSelection (number/accuse/exit): ")
+            
+            if can_accuse:
+                print("\nOptions: Type number to talk, 'accuse' to solve.")
+            else:
+                print(f"\nOptions: Type number to talk. (Accusation unlocks in {turns_left - 15} turns)")
 
+            choice = input("\nSelection: ")
+        
         # Exit
         if choice.lower() in ["exit", "quit"]:
             print("Case closed (Unsolved).")
