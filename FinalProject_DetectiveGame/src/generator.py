@@ -3,8 +3,17 @@ import json
 from google import genai
 from google.genai import types
 
-# configuration
-API_KEY = "AIzaSyDnXjr2H9jLtt-jHRfYg2Sekv-56wcWp_g" 
+import os
+from dotenv import load_dotenv
+
+# Load the hidden .env file
+load_dotenv()
+
+API_KEY = os.getenv("GEMINI_API_KEY")
+
+if not API_KEY:
+    raise ValueError("No API Key found! Make sure you have a .env file with GEMINI_API_KEY.")
+
 
 OUTPUT_FILE = "data/scenario_generated.json"
 

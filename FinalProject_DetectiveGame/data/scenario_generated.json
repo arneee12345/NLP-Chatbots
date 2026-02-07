@@ -1,128 +1,128 @@
 {
   "meta": {
-    "title": "Paws of Wrath: A Sanctuary's Secret",
-    "intro_text": "The Paws & Whiskers Sanctuary, a haven for rescued animals, awoke to a grim discovery. Eleanor Vance, the shelter's formidable and wealthy owner, was found dead in her private office, an ornate, heavy ceremonial dog leash discarded nearby. The sanctuary, usually a place of solace, now hums with unspoken tension. Detectives have cordoned off the scene, and three individuals who were present in the building last night are the primary focus of the investigation. The clock is ticking to uncover the truth behind Eleanor's demise before more secrets are buried.",
+    "title": "Tranquil Betrayal at Harmony Haven",
+    "intro_text": "Harmony Haven, a renowned animal sanctuary nestled deep in the Redwood National Park, is a peaceful haven for endangered species and a beacon of conservation. Or so it seemed. The sanctuary's eccentric and wealthy founder, Dr. Aris Thorne, has been found dead in his private study. An empty tranquilizer dart gun, usually locked in the veterinary clinic, lay beside his lifeless body. Preliminary reports suggest anaphylactic shock from an overdose of a powerful animal sedative. The sanctuary is now on lockdown, and it's up to you to uncover the truth behind Dr. Thorne's untimely demise. Who among the devoted staff could commit such a heinous act in a place dedicated to life?",
     "solution": {
-      "killer": "Arthur Finch",
-      "motive": "Eleanor Vance was in the process of disinheriting Arthur Finch after discovering his attempts to siphon funds from the sanctuary. He overheard her discussing the changes to her will, leading to a confrontation where he fatally struck her with the ceremonial dog leash."
+      "killer": "Elara Vance",
+      "motive": "Elara Vance, the Head Veterinarian, murdered Dr. Thorne to prevent him from selling Harmony Haven to a pharmaceutical corporation, which would convert it into an animal testing facility. She saw this as a profound betrayal of the sanctuary's mission and her life's work. Her rage was further fueled by Thorne's recent firing of her beloved mentor. She confronted him and, in a fit of passion, used a potent animal tranquilizer to end his plans and his life."
     }
   },
   "outcomes": {
-    "success": "You've successfully unraveled the tangled web of deceit and brought Eleanor Vance's killer to justice. The Paws & Whiskers Sanctuary can begin to heal, its animals safe once more.",
-    "failure": "Your accusation missed the mark. The true killer walks free, and the sanctuary remains under the shadow of suspicion. The animals, and Eleanor's legacy, are left to an uncertain fate.",
-    "timeout": "Time has run out, and the killer has slipped away into the night. The truth remains hidden, leaving the sanctuary and its inhabitants without closure, the mystery forever unsolved."
+    "success": "You've successfully identified Elara Vance as the killer and exposed her desperate act to save Harmony Haven from its founder's betrayal. Justice is served, and the sanctuary's future, while uncertain, is now in better hands.",
+    "failure": "Your accusation was incorrect. The true killer remains free, and Harmony Haven may never recover from the injustice. The sanctuary's future is bleak, and Dr. Thorne's killer walks among the innocent.",
+    "timeout": "Time has run out, and the killer has evaded justice. The truth behind Dr. Thorne's death is lost to the shadows, and Harmony Haven's legacy is forever stained by this unsolved mystery."
   },
   "suspects": [
     {
-      "id": "arthur_finch",
-      "name": "Arthur Finch",
-      "bio": "Eleanor's estranged nephew, recently 'volunteering' at the shelter. Known for his keen interest in Eleanor's finances and quick temper.",
-      "personality_style": "Shifty, resentful, trying to appear helpful",
+      "id": "elara_vance",
+      "name": "Elara Vance",
+      "bio": "The stoic and fiercely dedicated Head Veterinarian. Elara has poured her life into Harmony Haven and its animals, often clashing with Dr. Thorne over his increasingly commercial decisions.",
+      "personality_style": "stoic, passionate, controlled anger",
       "is_guilty": true,
       "knowledge_sentences": [
-        "I was feeding the nocturnal bats and owls in the East Wing from 18:00 to 19:00; it's a messy job.",
-        "Around 20:00, I spoke with Clara Bellweather about some overdue bills for the animal feed suppliers in the main reception.",
-        "I walked past Eleanor's office at 21:00 and heard her on the phone; she sounded very animated, almost yelling.",
-        "I entered Eleanor's office around 22:00 to ask about my work schedule, but she seemed preoccupied, mentioning 'legal documents' and waving me away.",
-        "I saw Dr. Petrova heading towards the surgical suite around 19:30; she always looks so stern and focused.",
-        "That ornate dog leash in Eleanor's office? I always thought it was a bit ostentatious, but she loved it. A gift, I think.",
-        "Eleanor was a difficult woman, always threatening to change her will if anyone stepped out of line. I overheard her talking to someone about removing 'someone completely' from a will.",
-        "I left her office around 22:30, I remember glancing at the clock, and went straight to my staff apartment.",
-        "I saw Clara leave the main reception around 21:30, she seemed to be tidying up."
+        "Dr. Thorne was planning to sell Harmony Haven to a giant pharmaceutical company, which would have turned it into a testing facility.",
+        "I was in my lab all evening, from about 8 PM until midnight, working on a crucial vaccine trial for the new tiger cubs.",
+        "I have access to all the animal medications, naturally, including the large animal tranquilizers, but they are strictly logged.",
+        "I saw Marcus O'Connell near the main gates around 7 PM, looking agitated, almost like he was waiting for someone.",
+        "Thorne had just fired Old Man Hemlock, our best animal trainer and my mentor, without explanation. It was a clear sign of his ruthlessness.",
+        "I know the exact dosage of tranquilizer needed to incapacitate a large lion, or even a human, if misapplied.",
+        "I left my lab briefly around 11 PM to get a specific reagent from the supply closet, which is quite close to Dr. Thorne's office."
       ],
       "timeline": {
-        "18:00": "Feeding nocturnal animals in the East Wing.",
-        "19:00": "In the staff break room, looking at the donor board.",
-        "20:00": "Talking to Clara in the main reception about shelter finances.",
-        "21:00": "Walking past Eleanor's office, heard her on the phone.",
-        "22:00": "Confronted Eleanor in her office.",
-        "23:00": "Left Eleanor's office and went quickly to his staff apartment.",
-        "00:00": "In his staff apartment, trying to sleep."
+        "18:00": "Completing evening rounds in the primate house.",
+        "19:00": "In the veterinary clinic, reviewing case files.",
+        "20:00": "Entered my personal lab to begin work on the tiger cub vaccine.",
+        "21:00": "Deep in experimental vaccine development in the lab.",
+        "22:00": "Still in the lab, growing increasingly frustrated by thoughts of Dr. Thorne's plans.",
+        "23:00": "Confronted Dr. Thorne in his office about the sanctuary's sale. Argument ensued.",
+        "00:00": "Returned to my lab, attempting to appear busy with 'paperwork'."
       },
       "prefixes": [
-        "Listen, ",
-        "Honestly, "
+        "(Elara sighs, crossing her arms) ",
+        "(With a sharp look) ",
+        "(Her voice is low, but firm) "
       ],
       "suffixes": [
-        "...that's all I know.",
-        " You have to believe me."
+        ", and that's the truth.",
+        ". My conscience is clear.",
+        ". I have nothing more to say."
       ],
-      "defense_statement": "This is outrageous! I would never hurt Eleanor, despite our disagreements. You have no proof!",
-      "fallback_statement": "I'm afraid I don't recall that detail right now. It was a long night."
+      "defense_statement": "Accuse me? You clearly don't understand the depth of my dedication to these animals! I would never harm Dr. Thorne, despite our disagreements. You're wasting time while the real threat to Harmony Haven remains.",
+      "fallback_statement": "I'm not sure what you're asking. I've told you everything I know."
     },
     {
-      "id": "dr_lena_petrova",
-      "name": "Dr. Lena Petrova",
-      "bio": "The dedicated head veterinarian, known for her unwavering commitment to animal welfare, often clashing with Eleanor over budget decisions.",
-      "personality_style": "Cold, professional, blunt",
+      "id": "marcus_oconnell",
+      "name": "Marcus 'Mac' O'Connell",
+      "bio": "The gruff but big-hearted Grounds Manager. Mac is fiercely loyal to the animals but harbors a secret gambling problem that Dr. Thorne was aware of.",
+      "personality_style": "gruff, anxious, easily flustered",
       "is_guilty": false,
       "knowledge_sentences": [
-        "I was in my office until 19:00, reviewing post-operative charts, then moved to the surgical suite to organize for tomorrow's operations.",
-        "Around 20:30, I checked on Barkley, the recovering poodle, in the recovery ward; he's had a rough week.",
-        "I had a solitary dinner in the staff break room around 21:00. No one else was there; it was unusually quiet.",
-        "I distinctly heard a loud, angry male voice from Eleanor's office around 22:15. It sounded like a heated argument.",
-        "I saw Arthur Finch hurrying away from the administrative wing around 22:45; he looked incredibly agitated.",
-        "Eleanor and I had a significant disagreement earlier about funding Barkley's expensive MRI. She was incredibly stubborn and short-sighted.",
-        "Clara Bellweather seemed to be cleaning the main reception area around 21:00; I saw her through the glass panel.",
-        "I don't concern myself with office politics or wills, only the welfare of these animals. That was my only focus.",
-        "The ceremonial leash? I think it was given to Eleanor by some wealthy donor years ago. Ostentatious, not practical."
+        "I saw Elara Vance heading towards Dr. Thorne's office just after 11 PM, looking like a storm cloud had just broken loose.",
+        "Dr. Thorne had lent me a significant sum of money, and he was threatening to expose my debts if I didn't pay up by the end of the month.",
+        "I heard whispers that Thorne was planning to sell the sanctuary off. It would be a disaster for all of us, especially the animals.",
+        "I was checking the north perimeter fences for most of the evening, a routine patrol, then went back to my cabin around 10:30 PM.",
+        "The tranquilizer dart gun is kept under lock and key in the vet clinic. Only Elara and Dr. Thorne had keys to that cabinet.",
+        "Earlier in the evening, around 9 PM, I heard a heated phone conversation coming from Thorne's office through an open window.",
+        "Serena Dubois always seemed to be in Dr. Thorne's good graces, but I saw her looking quite distraught after leaving his office earlier in the night."
       ],
       "timeline": {
-        "18:00": "Reviewing post-operative charts in her office.",
-        "19:00": "In the surgical suite, preparing for a morning procedure.",
-        "20:00": "Checking on the recovering poodle, Barkley, in the recovery ward.",
-        "21:00": "Had a quick dinner in the staff break room.",
-        "22:00": "Back in the surgical suite, organizing instruments.",
-        "23:00": "In her office, making notes for the morning.",
-        "00:00": "Left the building and drove home."
+        "18:00": "Finishing repairs on the rhino enclosure's feeding mechanism.",
+        "19:00": "Ate a quick dinner in the staff canteen, then headed towards my cabin.",
+        "20:00": "In my cabin, attempting to make a discreet phone call about my debts.",
+        "21:00": "On patrol, checking perimeter fences near the north section.",
+        "22:00": "Decided to try and sneak a look in Thorne's office for a chance at some cash.",
+        "23:00": "Lurking near Thorne's office, saw Elara approach. Overheard muffled voices and ducked away.",
+        "00:00": "Back in my cabin, unable to sleep, pacing anxiously."
       },
       "prefixes": [
-        "Factually, ",
-        "From my perspective, "
+        "(Mac rubs his neck nervously) ",
+        "(He clears his throat) ",
+        "(Slightly defensive) "
       ],
       "suffixes": [
-        ". My focus is on the animals.",
-        ". That is all I can tell you."
+        ", that's all I know.",
+        ". Don't twist my words.",
+        ". Just trying to be helpful."
       ],
-      "defense_statement": "Preposterous! My dedication is to these animals, not to any human drama. You are wasting valuable time that could be spent on real leads.",
-      "fallback_statement": "I'm sorry, I cannot provide a definitive answer for that."
+      "defense_statement": "Me? A killer? You got the wrong man! I love these animals more than anything, and Thorne was a pain, but not worth murder! You should be looking at who had the motive and the means to use that dart gun.",
+      "fallback_statement": "Look, I'm just a groundskeeper. I don't know anything about that."
     },
     {
-      "id": "clara_bellweather",
-      "name": "Clara Bellweather",
-      "bio": "Long-time shelter volunteer and Eleanor's personal assistant. Often gossipy but fiercely loyal to the sanctuary.",
-      "personality_style": "Overly eager, a bit gossipy, resentful",
+      "id": "serena_dubois",
+      "name": "Serena Dubois",
+      "bio": "Dr. Thorne's polished and ambitious personal assistant. Serena handled all of Thorne's appointments and communications, but recent financial troubles have made her desperate.",
+      "personality_style": "poised, slightly condescending, careful",
       "is_guilty": false,
       "knowledge_sentences": [
-        "I finished filing invoices in the main office around 19:00, then went to polish the donor plaque in the reception area.",
-        "Arthur Finch and I talked about the shelter's finances near the main reception around 20:00. He seemed very interested in money matters.",
-        "I saw Eleanor storm into her office around 20:30, muttering something about 'ungrateful people' under her breath.",
-        "Around 21:00, I was watering the large ficus in the main hall. It gets so dry this time of year.",
-        "I heard raised voices from Eleanor's office just before 22:30. It definitely sounded like a man and Eleanor, arguing fiercely.",
-        "Eleanor told me she was planning to meet with her lawyer tomorrow morning to amend her will. She said she was 'making some drastic changes'.",
-        "I saw Dr. Petrova leave the staff break room around 21:30, looking as stern as ever, and head towards her office.",
-        "Arthur seemed particularly agitated earlier in the evening, asking me about Eleanor's schedule for tomorrow and if she had any visitors.",
-        "The leash? Oh, that was a gift from the late Mr. Henderson, the shelter's biggest benefactor before Eleanor took over. It was very valuable."
+        "Dr. Thorne called me into his office for a 'very urgent, confidential discussion' around 10 PM. He seemed agitated about 'disloyal elements'.",
+        "I saw Marcus O'Connell loitering suspiciously near the main building's staff entrance just after I left Dr. Thorne's office, probably around 10:30 PM.",
+        "I was in the main office all evening, wrapping up urgent marketing reports for Dr. Thorne until about 10 PM, then went back to my cottage.",
+        "Dr. Thorne had just secured a very large, confidential deal, which he was quite pleased about, but he wouldn't tell me the details.",
+        "I overheard Elara Vance having a very intense conversation on the phone earlier in the evening, complaining about Dr. Thorne's decisions.",
+        "The dart gun in the vet clinic is highly controlled. I know for a fact Dr. Thorne sometimes carried a spare key for emergencies.",
+        "Dr. Thorne had been reviewing my financial reports very closely recently, asking some uncomfortable questions about my expenses."
       ],
       "timeline": {
-        "18:00": "Finishing administrative paperwork in the main office.",
-        "19:00": "Tidying up the donor wall in the reception area.",
-        "20:00": "Speaking with Arthur Finch in the reception area.",
-        "21:00": "Watering the plants in the main hall.",
-        "22:00": "In her staff apartment, reading a book.",
-        "23:00": "Still in her staff apartment, getting ready for bed.",
-        "00:00": "Asleep in her staff apartment."
+        "18:00": "At her desk in the main office, finalizing reports for the next day.",
+        "19:00": "Ordered dinner to her office, continuing to work on presentations.",
+        "20:00": "In the main office, preparing the social media schedule for the sanctuary.",
+        "21:00": "Received a cryptic and unsettling email, causing her to worry.",
+        "22:00": "Met Dr. Thorne in his office after he called her in for an urgent discussion.",
+        "23:00": "Back in her cottage, trying to process the intense conversation with Dr. Thorne.",
+        "00:00": "Still awake in her cottage, scrolling aimlessly on her phone, unable to sleep."
       },
       "prefixes": [
-        "Oh, dear, ",
-        "Well, I heard "
+        "(Serena smiles thinly) ",
+        "(She adjusts her glasses) ",
+        "(In a measured tone) "
       ],
       "suffixes": [
-        ". It was quite a shock!",
-        ". My heart goes out to Eleanor."
+        ". That's all I recall.",
+        ". I hope that helps.",
+        ". Anything else?"
       ],
-      "defense_statement": "Me? Kill Eleanor? Never! She could be difficult, yes, but I would never harm a soul, let alone a human!",
-      "fallback_statement": "I'm not entirely sure about that, my memory isn't what it used to be."
+      "defense_statement": "How dare you! I was Dr. Thorne's most trusted confidante! I had no reason to harm him. He was a difficult man, yes, but I valued my position. You should focus on those with a clearer motive.",
+      "fallback_statement": "I'm afraid I don't have any information on that particular subject."
     }
   ]
 }

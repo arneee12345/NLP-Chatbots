@@ -144,7 +144,7 @@ def main():
                 print(f"Final Score: {score}")
             break
 
-        can_accuse = turns_left <= 28 
+        can_accuse = turns_left <= 15 
         
         # Display Menu
         if HAS_RICH:
