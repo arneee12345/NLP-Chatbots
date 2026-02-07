@@ -126,7 +126,7 @@ def generate_mystery(theme: str):
 def save_scenario(data):
     if not data:
         print("❌ Error: No data to save.")
-        return
+        return False
     
     # Ensure data directory exists
     os.makedirs(os.path.dirname(OUTPUT_FILE), exist_ok=True)
@@ -136,24 +136,4 @@ def save_scenario(data):
     
     print(f"\n✅ SUCCESS! New mystery saved to: {OUTPUT_FILE}")
     print(f"📜 Title: \"{data['meta']['title']}\"")
-    
-    print("\n" + "="*40)
-    print("      🎮  HOW TO PLAY YOUR MYSTERY  🎮")
-    print("="*40)
-    print("1. The scenario is ready. DO NOT open the JSON file")
-    print("   (unless you want to spoil the solution!).")
-    print("\n2. Run your game engine to start playing:")
-    print("   > python main.py") 
-    print("="*40 + "\n")
-
-
-
-if __name__ == "__main__":
-    print("--- MYSTERY GENERATOR ---")
-    user_theme = input("Enter a theme (or press Enter for 'Cyberpunk Space Station'): ")
-    
-    if not user_theme.strip():
-        user_theme = "A murder on a Cyberpunk Space Station in the year 2099"
-        
-    scenario_data = generate_mystery(user_theme)
-    save_scenario(scenario_data)
+    return True

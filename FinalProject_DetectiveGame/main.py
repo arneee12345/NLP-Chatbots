@@ -13,10 +13,71 @@ except ImportError:
 
 # Project modules
 from src.suspect_data import load_scenario
-from src.nlp import DetectiveBrain  
+from src.nlp import DetectiveBrain
+from src.generator import generate_mystery, save_scenario
 
 def clear_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
+
+def main_menu(console):
+    """
+    Handles the startup choice: Play existing or Generate new.
+    """
+    while True:
+        clear_screen()
+        if HAS_RICH:
+            console.print(Panel.fit("[bold magenta]🕵️  AI DETECTIVE ENGINE[/bold magenta]", border_style="magenta"))
+        else:
+            print("--- AI DETECTIVE ENGINE ---")
+
+        # Check if we have a saved mystery
+        has_save = os.path.exists("data/scenario_generated.json")
+        
+        if HAS_RICH:
+            if has_save:
+                console.print("1. [bold green]Play Current Mystery[/bold green]")
+                console.print("2. [bold cyan]Generate NEW Mystery[/bold cyan]")
+            else:
+                console.print("[dim]No mystery found. You must generate one.[/dim]")
+                console.print("1. [bold cyan]Generate NEW Mystery[/bold cyan]")
+            
+            console.print("3. Exit")
+            choice = Prompt.ask("\nSelection")
+        else:
+            if has_save:
+                print("1. Play Current Mystery")
+                print("2. Generate NEW Mystery")
+            else:
+                print("1. Generate NEW Mystery")
+            print("3. Exit")
+            choice = input("\nSelection: ")
+
+        # Logic for selection
+        if choice == "3" or (choice.lower() == "exit"):
+            sys.exit(0)
+
+        # Generating a new mystery
+        if (has_save and choice == "2") or (not has_save and choice == "1"):
+            if HAS_RICH:
+                theme = Prompt.ask("[bold yellow]Enter a theme[/bold yellow] (or press Enter for 'Cyberpunk Space Station')")
+            else:
+                theme = input("Enter a theme (or press Enter for 'Cyberpunk Space Station'): ")
+            
+            if not theme.strip():
+                theme = "A murder on a Cyberpunk Space Station in the year 2099"
+            
+            # Call the generator
+            data = generate_mystery(theme)
+            if save_scenario(data):
+                input("\nPress Enter to start the case...")
+                return # Proceed to game
+            else:
+                input("\nGeneration failed. Press Enter to try again...")
+                continue
+
+        # Play existing
+        if has_save and choice == "1":
+            return # Proceed to game
 
 def main():
     if HAS_RICH:
@@ -24,23 +85,24 @@ def main():
     else:
         console = None
         
+    # 1. Run the Main Menu (Generate or Load)
+    main_menu(console)
+    
+    # 2. Initialize Game
     clear_screen()
     print("Initializing Detective AI System...")
     
-    # Initialize NLP engine
     try:
         brain = DetectiveBrain()
     except Exception as e:
         print(f"\nCRITICAL ERROR: Could not load NLP model. {e}")
         return
 
-    # Load Generated Scenario Directly
-    print("Loading Generated Scenario...")
+    # Load Generated Scenario
     scenario_data = load_scenario("data/scenario_generated.json")
     
     if not scenario_data:
         print("\n❌ FAILED: No generated story found.")
-        print("Please run 'python generate_story.py' to create a mystery first.")
         return
 
     # Unpack data
@@ -49,7 +111,6 @@ def main():
     outcomes = scenario_data["outcomes"]
     solution = meta["solution"]
     
-    # Game State
     turns_left = 30
     score = 1000
 
@@ -83,7 +144,7 @@ def main():
                 print(f"Final Score: {score}")
             break
 
-        can_accuse = turns_left <= 15
+        can_accuse = turns_left <= 28 
         
         # Display Menu
         if HAS_RICH:
@@ -95,7 +156,7 @@ def main():
             if can_accuse:
                 console.print("\n[dim]Options: Type number to talk, 'accuse' to solve, 'exit' to quit.[/dim]")
             else:
-                console.print(f"\n[dim]Options: Type number to talk. (Accusation unlocks in {turns_left - 25} turns)[/dim]")
+                console.print(f"\n[dim]Options: Type number to talk. (Accusation unlocks in {turns_left - 28} turns)[/dim]")
                 
             choice = Prompt.ask("Selection")
         else:
@@ -111,17 +172,14 @@ def main():
 
             choice = input("\nSelection: ")
         
-        # Exit
         if choice.lower() in ["exit", "quit"]:
             print("Case closed (Unsolved).")
             break
             
-        # Accusation Logic
         if choice.lower() == "accuse":
             print("\nWHO IS THE KILLER?")
             guess = input("Type the name: ")
             
-            # Check against solution
             if solution["killer"].lower() in guess.lower():
                 score += 500
                 rank = "Rookie"
@@ -149,7 +207,6 @@ def main():
                     print(f"FINAL SCORE: {score}")
                 break 
 
-        # Select Suspect
         if choice.isdigit():
             idx = int(choice) - 1
             if 0 <= idx < len(suspects):
@@ -189,17 +246,13 @@ def interrogate_suspect(console, brain, suspect, turns_left, score):
         if user_input.lower() in ["back", "return", "exit"]:
             break
 
-        # Cost per question
         turns_left -= 1
         score -= 10
 
-        # Willingness logic
         insults = ["idiot", "stupid", "dumb", "liar", "shut up", "ugly", "crazy"]
         user_lower = user_input.lower()
         is_pure_insult = any(word in user_lower for word in insults)
         
-        is_accusation = ("you" in user_lower) and any(verb in user_lower for verb in ["kill", "murder", "stab", "do it"])
-
         if is_pure_insult:
             suspect.decrease_willingness(15)
             score -= 50
@@ -217,7 +270,6 @@ def interrogate_suspect(console, brain, suspect, turns_left, score):
                 print(msg)
             continue 
             
-        # Process NLP
         response = brain.parse(user_input, suspect)
         
         if HAS_RICH:

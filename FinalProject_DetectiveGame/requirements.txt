@@ -3,3 +3,6 @@ spacy>=3.7.0
 
 # Terminal UI/Colors
 rich>=13.0.0
+
+# Google API Usage
+google-genai>=0.1.0

@@ -1,126 +1,128 @@
 {
   "meta": {
-    "title": "Aether Nexus Vendetta: Thorne's Last Byte",
-    "intro_text": "Welcome to Aether Nexus, 2099. A gleaming corporate citadel orbiting Earth, where humanity's elite conduct business, research, and recreation. But even in this beacon of progress, darkness can lurk. Elias Thorne, the ruthless CEO of OmniCorp Data Solutions and a titan of the infotech world, has been found dead in his lavish private sky-lounge. His personal AI discovered him at 23:15, unresponsive. Forensics indicate he succumbed to a lethal neuro-toxin, 'Synaptic Shadow', administered via his customized neural implant. The station's security is on lockdown, and it's up to you to uncover the truth behind Thorne's demise. Three individuals on board had strong reasons to wish Thorne gone, but only one is a murderer.",
+    "title": "Paws of Wrath: A Sanctuary's Secret",
+    "intro_text": "The Paws & Whiskers Sanctuary, a haven for rescued animals, awoke to a grim discovery. Eleanor Vance, the shelter's formidable and wealthy owner, was found dead in her private office, an ornate, heavy ceremonial dog leash discarded nearby. The sanctuary, usually a place of solace, now hums with unspoken tension. Detectives have cordoned off the scene, and three individuals who were present in the building last night are the primary focus of the investigation. The clock is ticking to uncover the truth behind Eleanor's demise before more secrets are buried.",
     "solution": {
-      "killer": "Dr. Kaelen Varr",
-      "motive": "Dr. Kaelen Varr orchestrated the murder of Elias Thorne as revenge. Thorne had stolen Varr's groundbreaking research on neural implants and the 'Synaptic Shadow' neuro-toxin concept, then absorbed and dismantled Varr's company, CogniMind. Varr's motive was solidified when he learned Thorne was planning to sell the stolen, dangerous research. Varr, an expert in neural technology, remotely hacked Thorne's custom implant during a brief window when he left his lab, delivering the toxin."
+      "killer": "Arthur Finch",
+      "motive": "Eleanor Vance was in the process of disinheriting Arthur Finch after discovering his attempts to siphon funds from the sanctuary. He overheard her discussing the changes to her will, leading to a confrontation where he fatally struck her with the ceremonial dog leash."
     }
   },
   "outcomes": {
-    "success": "The truth has been uncovered. Dr. Kaelen Varr is apprehended, his meticulous plan unravelled by your keen investigation. Justice is served, even on the fringes of the known galaxy.",
-    "failure": "Your accusation missed the mark. The true killer walks free, and Aether Nexus descends into further uncertainty. The station's reputation is irrevocably stained, and a dangerous criminal remains at large.",
-    "timeout": "Time has run out. The trail has gone cold, and crucial evidence may have been compromised. The murder of Elias Thorne remains unsolved, a chilling reminder of the perils even in the most advanced frontiers."
+    "success": "You've successfully unraveled the tangled web of deceit and brought Eleanor Vance's killer to justice. The Paws & Whiskers Sanctuary can begin to heal, its animals safe once more.",
+    "failure": "Your accusation missed the mark. The true killer walks free, and the sanctuary remains under the shadow of suspicion. The animals, and Eleanor's legacy, are left to an uncertain fate.",
+    "timeout": "Time has run out, and the killer has slipped away into the night. The truth remains hidden, leaving the sanctuary and its inhabitants without closure, the mystery forever unsolved."
   },
   "suspects": [
     {
-      "id": "dr_kaelen_varr",
-      "name": "Dr. Kaelen Varr",
-      "bio": "A brilliant but disgraced cyber-neurologist, once the lead innovator at 'CogniMind', a rival corporation that Elias Thorne aggressively acquired and dismantled. Dr. Varr's career and reputation were utterly destroyed in the process.",
-      "personality_style": "Cold, bitter, highly intelligent, meticulous.",
+      "id": "arthur_finch",
+      "name": "Arthur Finch",
+      "bio": "Eleanor's estranged nephew, recently 'volunteering' at the shelter. Known for his keen interest in Eleanor's finances and quick temper.",
+      "personality_style": "Shifty, resentful, trying to appear helpful",
       "is_guilty": true,
       "knowledge_sentences": [
-        "I was in my private lab in the Bio-Engineering Sector from 20:00 until after midnight, working on my neural network simulations.",
-        "Elias Thorne destroyed my life and stole my research; he deserved whatever came to him, but I'm not a killer.",
-        "I saw Commander Rourke near the central comms hub around 19:30, looking stressed, probably about some security breach.",
-        "Thorne's customized neural implant was based on my own early designs, a sophisticated piece of tech, very hard to bypass.",
-        "I heard rumors Thorne was having issues with a data broker, Lena Volkov, over a big contract, something about exposure.",
-        "The 'Synaptic Shadow' neuro-toxin? I conceptualized a similar agent years ago, but it was purely theoretical, too dangerous to synthesize.",
-        "I briefly saw Thorne in the Sky-Lounge foyer around 19:00, he looked like he'd just finished a tense meeting with someone.",
-        "My lab's network logs will show I was engaged in heavy processing, nothing suspicious or out of the ordinary.",
-        "I only left my lab once, for a few minutes, to grab a synth-coffee from the dispenser down the hall around 22:15. Didn't see anyone there."
+        "I was feeding the nocturnal bats and owls in the East Wing from 18:00 to 19:00; it's a messy job.",
+        "Around 20:00, I spoke with Clara Bellweather about some overdue bills for the animal feed suppliers in the main reception.",
+        "I walked past Eleanor's office at 21:00 and heard her on the phone; she sounded very animated, almost yelling.",
+        "I entered Eleanor's office around 22:00 to ask about my work schedule, but she seemed preoccupied, mentioning 'legal documents' and waving me away.",
+        "I saw Dr. Petrova heading towards the surgical suite around 19:30; she always looks so stern and focused.",
+        "That ornate dog leash in Eleanor's office? I always thought it was a bit ostentatious, but she loved it. A gift, I think.",
+        "Eleanor was a difficult woman, always threatening to change her will if anyone stepped out of line. I overheard her talking to someone about removing 'someone completely' from a will.",
+        "I left her office around 22:30, I remember glancing at the clock, and went straight to my staff apartment.",
+        "I saw Clara leave the main reception around 21:30, she seemed to be tidying up."
       ],
       "timeline": {
-        "18:00": "In private lab, Bio-Engineering Sector.",
-        "19:00": "Briefly in Sky-Lounge foyer, then returned to lab.",
-        "20:00": "In private lab, working on simulations.",
-        "21:00": "In private lab, working on simulations.",
-        "22:00": "In private lab, working on simulations (left for coffee at 22:15).",
-        "23:00": "Returned to private lab, continued work.",
-        "00:00": "Still in private lab."
+        "18:00": "Feeding nocturnal animals in the East Wing.",
+        "19:00": "In the staff break room, looking at the donor board.",
+        "20:00": "Talking to Clara in the main reception about shelter finances.",
+        "21:00": "Walking past Eleanor's office, heard her on the phone.",
+        "22:00": "Confronted Eleanor in her office.",
+        "23:00": "Left Eleanor's office and went quickly to his staff apartment.",
+        "00:00": "In his staff apartment, trying to sleep."
       },
       "prefixes": [
-        "Dr. Varr says: ",
-        "Kaelen: "
+        "Listen, ",
+        "Honestly, "
       ],
       "suffixes": [
-        "...that's all I recall.",
-        "...my memory is quite precise."
+        "...that's all I know.",
+        " You have to believe me."
       ],
-      "defense_statement": "Preposterous! I've been smeared by Thorne for years, but I am a man of science, not a murderer. My work keeps me isolated. Check my data, it will prove my innocence.",
-      "fallback_statement": "My apologies, I am focused on my research. I cannot provide information on that particular subject."
+      "defense_statement": "This is outrageous! I would never hurt Eleanor, despite our disagreements. You have no proof!",
+      "fallback_statement": "I'm afraid I don't recall that detail right now. It was a long night."
     },
     {
-      "id": "commander_jax_rourke",
-      "name": "Commander Jax Rourke",
-      "bio": "Chief of Security for Aether Nexus. An ex-military hardliner, Commander Rourke frequently clashed with Thorne over the CEO's lax security practices and attempts to bypass station protocols.",
-      "personality_style": "Gruff, professional, by-the-book, wary.",
+      "id": "dr_lena_petrova",
+      "name": "Dr. Lena Petrova",
+      "bio": "The dedicated head veterinarian, known for her unwavering commitment to animal welfare, often clashing with Eleanor over budget decisions.",
+      "personality_style": "Cold, professional, blunt",
       "is_guilty": false,
       "knowledge_sentences": [
-        "My patrol logs show I was in Sector Delta-7, near the Bio-Engineering Sector entrance, from 22:00 to 23:00, monitoring activity.",
-        "I saw Thorne enter his Sky-Lounge around 22:00. He seemed agitated, as if expecting trouble, but didn't say anything to me.",
-        "Dr. Varr's lab is in Bio-Engineering. I saw him briefly at the automated coffee dispenser around 22:20. He looked preoccupied, didn't notice me.",
-        "Thorne was always trying to cut corners on security. He installed his own custom neural implant, bypassing station protocols and making it a vulnerability.",
-        "I had a tense conversation with Lena Volkov in the station's central plaza around 19:45, she was upset about Thorne not paying her for a job.",
-        "The Sky-Lounge's private network is isolated, but any hack would likely need a high-gain connection or deep system access from within the station.",
-        "I know for a fact Dr. Varr had his entire company, CogniMind, absorbed by OmniCorp. He has a serious grudge against Thorne, everyone knows that.",
-        "Around 21:00, I checked the security feed for the main concourse; Lena Volkov was still there, arguing with someone I couldn't identify, looked like a client."
+        "I was in my office until 19:00, reviewing post-operative charts, then moved to the surgical suite to organize for tomorrow's operations.",
+        "Around 20:30, I checked on Barkley, the recovering poodle, in the recovery ward; he's had a rough week.",
+        "I had a solitary dinner in the staff break room around 21:00. No one else was there; it was unusually quiet.",
+        "I distinctly heard a loud, angry male voice from Eleanor's office around 22:15. It sounded like a heated argument.",
+        "I saw Arthur Finch hurrying away from the administrative wing around 22:45; he looked incredibly agitated.",
+        "Eleanor and I had a significant disagreement earlier about funding Barkley's expensive MRI. She was incredibly stubborn and short-sighted.",
+        "Clara Bellweather seemed to be cleaning the main reception area around 21:00; I saw her through the glass panel.",
+        "I don't concern myself with office politics or wills, only the welfare of these animals. That was my only focus.",
+        "The ceremonial leash? I think it was given to Eleanor by some wealthy donor years ago. Ostentatious, not practical."
       ],
       "timeline": {
-        "18:00": "Security office, reviewing patrol schedules.",
-        "19:00": "Patrolling Central Concourse.",
-        "20:00": "Patrolling Sector Gamma-9.",
-        "21:00": "Reviewing security feeds in office, then continued patrol.",
-        "22:00": "Patrolling Sector Delta-7 (near Bio-Engineering).",
-        "23:00": "Reported to Sky-Lounge upon discovery of Thorne's body.",
-        "00:00": "Securing crime scene."
+        "18:00": "Reviewing post-operative charts in her office.",
+        "19:00": "In the surgical suite, preparing for a morning procedure.",
+        "20:00": "Checking on the recovering poodle, Barkley, in the recovery ward.",
+        "21:00": "Had a quick dinner in the staff break room.",
+        "22:00": "Back in the surgical suite, organizing instruments.",
+        "23:00": "In her office, making notes for the morning.",
+        "00:00": "Left the building and drove home."
       },
       "prefixes": [
-        "Commander Rourke: ",
-        "Rourke states: "
+        "Factually, ",
+        "From my perspective, "
       ],
       "suffixes": [
-        "...and that's an official statement.",
-        "...my logs will confirm this."
+        ". My focus is on the animals.",
+        ". That is all I can tell you."
       ],
-      "defense_statement": "My duty is to this station's security, not to murder its VIPs. My movements are logged, and my hands are clean.",
-      "fallback_statement": "That information is classified, or I do not have a report on that."
+      "defense_statement": "Preposterous! My dedication is to these animals, not to any human drama. You are wasting valuable time that could be spent on real leads.",
+      "fallback_statement": "I'm sorry, I cannot provide a definitive answer for that."
     },
     {
-      "id": "lena_ghost_volkov",
-      "name": "Lena 'Ghost' Volkov",
-      "bio": "A notorious data broker and information-trafficker, Lena was often hired by Thorne for morally dubious tasks. Recently, they had a major falling out over an unpaid contract and Thorne's threats to expose her vast network.",
-      "personality_style": "Sly, evasive, confident, street-smart.",
+      "id": "clara_bellweather",
+      "name": "Clara Bellweather",
+      "bio": "Long-time shelter volunteer and Eleanor's personal assistant. Often gossipy but fiercely loyal to the sanctuary.",
+      "personality_style": "Overly eager, a bit gossipy, resentful",
       "is_guilty": false,
       "knowledge_sentences": [
-        "I had a meeting with a client in the Shadow Market from 21:30 until 23:00. No witnesses, that's how I operate.",
-        "Thorne owed me a fortune, and he threatened to expose my network if I pressed him. I wanted to see him rot, not dead, not yet.",
-        "I had a nasty holo-call with Thorne around 21:45 from my secure comm-booth in the Shadow Market. He was smug, talking about his 'unhackable tech'.",
-        "Dr. Varr? Yeah, I know him. He's still bitter about Thorne stealing his implant tech. He always seemed like the type to hold a serious grudge.",
-        "I saw Commander Rourke acting shifty near the Bio-Engineering Sector entrance around 20:30. He seemed to be looking for someone or something specific.",
-        "Thorne was showing off a new security upgrade for his neural implant, something Varr designed originally, but Thorne 'improved' it. Said it was 'Synaptic Shadow' proof.",
-        "My client is anonymous, so I can't provide a name, but I can show my payment transaction logs from the Shadow Market's blockchain at 22:45, verifiable.",
-        "I heard Thorne was planning to sell off some of Varr's *stolen* research, the really dangerous stuff, to a rival corp. That would've driven Varr absolutely mad."
+        "I finished filing invoices in the main office around 19:00, then went to polish the donor plaque in the reception area.",
+        "Arthur Finch and I talked about the shelter's finances near the main reception around 20:00. He seemed very interested in money matters.",
+        "I saw Eleanor storm into her office around 20:30, muttering something about 'ungrateful people' under her breath.",
+        "Around 21:00, I was watering the large ficus in the main hall. It gets so dry this time of year.",
+        "I heard raised voices from Eleanor's office just before 22:30. It definitely sounded like a man and Eleanor, arguing fiercely.",
+        "Eleanor told me she was planning to meet with her lawyer tomorrow morning to amend her will. She said she was 'making some drastic changes'.",
+        "I saw Dr. Petrova leave the staff break room around 21:30, looking as stern as ever, and head towards her office.",
+        "Arthur seemed particularly agitated earlier in the evening, asking me about Eleanor's schedule for tomorrow and if she had any visitors.",
+        "The leash? Oh, that was a gift from the late Mr. Henderson, the shelter's biggest benefactor before Eleanor took over. It was very valuable."
       ],
       "timeline": {
-        "18:00": "At my private apartment, Sector Chi-3.",
-        "19:00": "Central Plaza, meeting with an informant.",
-        "20:00": "Entering Shadow Market district.",
-        "21:00": "In a secure comm-booth in the Shadow Market.",
-        "22:00": "Meeting with a client in the Shadow Market.",
-        "23:00": "Still with client, then left Shadow Market.",
-        "00:00": "Back at apartment."
+        "18:00": "Finishing administrative paperwork in the main office.",
+        "19:00": "Tidying up the donor wall in the reception area.",
+        "20:00": "Speaking with Arthur Finch in the reception area.",
+        "21:00": "Watering the plants in the main hall.",
+        "22:00": "In her staff apartment, reading a book.",
+        "23:00": "Still in her staff apartment, getting ready for bed.",
+        "00:00": "Asleep in her staff apartment."
       },
       "prefixes": [
-        "Lena 'Ghost' Volkov: ",
-        "Ghost says: "
+        "Oh, dear, ",
+        "Well, I heard "
       ],
       "suffixes": [
-        "...that's my story.",
-        "...and I stick to it."
+        ". It was quite a shock!",
+        ". My heart goes out to Eleanor."
       ],
-      "defense_statement": "I'm a data broker, not a killer. Thorne was worth more to me alive, even if he was a pain. My hands are clean, and my network is proof.",
-      "fallback_statement": "That information is proprietary, or I simply don't have it."
+      "defense_statement": "Me? Kill Eleanor? Never! She could be difficult, yes, but I would never harm a soul, let alone a human!",
+      "fallback_statement": "I'm not entirely sure about that, my memory isn't what it used to be."
     }
   ]
 }
