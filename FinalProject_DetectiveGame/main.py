@@ -83,7 +83,7 @@ def main():
                 print(f"Final Score: {score}")
             break
 
-        can_accuse = turns_left <= 25 # Let them accuse earlier (turn 25 instead of 15)
+        can_accuse = turns_left <= 15
         
         # Display Menu
         if HAS_RICH:
@@ -198,7 +198,6 @@ def interrogate_suspect(console, brain, suspect, turns_left, score):
         user_lower = user_input.lower()
         is_pure_insult = any(word in user_lower for word in insults)
         
-        # Don't penalize accusations as much, it's part of the game
         is_accusation = ("you" in user_lower) and any(verb in user_lower for verb in ["kill", "murder", "stab", "do it"])
 
         if is_pure_insult:

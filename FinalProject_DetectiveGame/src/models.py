@@ -1,5 +1,3 @@
-# src/models.py
-
 class KnowledgeBase:
     def __init__(self):
         self.facts = {}

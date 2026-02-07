@@ -22,8 +22,7 @@ class DetectiveBrain:
         # Words that trigger defensive mode
         self.accusations = ["kill", "murder", "guilty", "arrest", "confess", "stab", "poison", "hurt", "harm", "shoot", "did you do it"]
 
-        # GENERIC synonyms only. 
-        # We removed specific names (Julian, Veronica) so the AI works with any story.
+        # generic synonyms 
         self.synonyms = {
             # Actions
             "do": ["doing", "action", "activity", "working", "busy"], 

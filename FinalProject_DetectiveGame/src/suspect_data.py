@@ -21,8 +21,6 @@ def load_scenario(filename="data/scenario_generated.json"):
     loaded_suspects = []
 
     for s_data in data["suspects"]:
-        # Safety Check: Ensure sentences end with punctuation before joining
-        # otherwise "I went home" + "I ate" becomes "I went home I ate" which confuses NLP.
         clean_sentences = []
         for s in s_data["knowledge_sentences"]:
             s = s.strip()
