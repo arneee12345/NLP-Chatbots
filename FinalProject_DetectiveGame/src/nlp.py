@@ -100,8 +100,13 @@ class DetectiveBrain:
         if t and t in suspect.timeline:
             return self.build_response(suspect.timeline[t], suspect)
 
-        # 2. Greetings
+        # 2. Greetings (NOW CHECKS FOR REPETITION)
         if doc[0].text in self.greetings:
+             if suspect.last_match == "greeting":
+                 suspect.decrease_willingness(10) # Smaller penalty for saying hi
+                 return f"(Annoyed) We have established that. Ask your questions."
+             
+             suspect.last_match = "greeting"
              return f"({suspect.personality_style.replace('_', ' ')}) I am listening."
 
         # 3. Accusations
@@ -176,8 +181,16 @@ class DetectiveBrain:
         if best_score > self.threshold and best_sent:
             
             if best_sent == last:
-                suspect.last_match = best_sent
-                return f"As I said, {best_sent}"
+                
+                annoyed_phrases = [
+                    "I already answered that!", 
+                    "Are you not listening? I am not repeating myself.", 
+                    "I told you already!", 
+                    "Do not waste my time with the same questions."
+                ]
+                
+                # Return ONLY the refusal
+                return f"(Annoyed) {random.choice(annoyed_phrases)}"
             
             suspect.last_match = best_sent
             return self.build_response(best_sent, suspect)
