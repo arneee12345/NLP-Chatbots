@@ -1,128 +1,128 @@
 {
   "meta": {
-    "title": "Tranquil Betrayal at Harmony Haven",
-    "intro_text": "Harmony Haven, a renowned animal sanctuary nestled deep in the Redwood National Park, is a peaceful haven for endangered species and a beacon of conservation. Or so it seemed. The sanctuary's eccentric and wealthy founder, Dr. Aris Thorne, has been found dead in his private study. An empty tranquilizer dart gun, usually locked in the veterinary clinic, lay beside his lifeless body. Preliminary reports suggest anaphylactic shock from an overdose of a powerful animal sedative. The sanctuary is now on lockdown, and it's up to you to uncover the truth behind Dr. Thorne's untimely demise. Who among the devoted staff could commit such a heinous act in a place dedicated to life?",
+    "title": "Murder Aboard the Celestial Empress",
+    "intro_text": "Lord Theron Volkov, celebrated astro-archaeologist and a prominent passenger, was found dead in his luxury suite on the interstellar cruise liner 'The Celestial Empress.' The ship is locked down, and the captain has tasked you, a renowned space detective, to find the killer before the next jump to warp. Medical scans indicate a fast-acting neurotoxin, 'Nyx's Kiss,' was administered sometime between 21:30 and 22:30.",
     "solution": {
-      "killer": "Elara Vance",
-      "motive": "Elara Vance, the Head Veterinarian, murdered Dr. Thorne to prevent him from selling Harmony Haven to a pharmaceutical corporation, which would convert it into an animal testing facility. She saw this as a profound betrayal of the sanctuary's mission and her life's work. Her rage was further fueled by Thorne's recent firing of her beloved mentor. She confronted him and, in a fit of passion, used a potent animal tranquilizer to end his plans and his life."
+      "killer": "Dr. Aris Thorne",
+      "motive": "Revenge for Lord Volkov stealing Thorne's groundbreaking research on the 'Chrysalis Nebula Artifacts' years ago, leading to Thorne's professional ruin and public humiliation. Volkov was preparing to publish a new paper based on Thorne's stolen work."
     }
   },
   "outcomes": {
-    "success": "You've successfully identified Elara Vance as the killer and exposed her desperate act to save Harmony Haven from its founder's betrayal. Justice is served, and the sanctuary's future, while uncertain, is now in better hands.",
-    "failure": "Your accusation was incorrect. The true killer remains free, and Harmony Haven may never recover from the injustice. The sanctuary's future is bleak, and Dr. Thorne's killer walks among the innocent.",
-    "timeout": "Time has run out, and the killer has evaded justice. The truth behind Dr. Thorne's death is lost to the shadows, and Harmony Haven's legacy is forever stained by this unsolved mystery."
+    "success": "You have successfully unmasked the killer! Justice is served aboard the Celestial Empress. Dr. Thorne confessed to administering 'Nyx's Kiss' in Lord Volkov's evening nutrient paste, citing years of stolen work and professional sabotage.",
+    "failure": "Your accusation was incorrect. The true killer remains at large, and the Celestial Empress is thrown into further chaos. The reputation of the Interstellar Detective Agency is tarnished.",
+    "timeout": "The Celestial Empress makes its next warp jump, and crucial evidence is lost in the void. The killer escapes into the vastness of space, leaving the mystery unsolved."
   },
   "suspects": [
     {
-      "id": "elara_vance",
-      "name": "Elara Vance",
-      "bio": "The stoic and fiercely dedicated Head Veterinarian. Elara has poured her life into Harmony Haven and its animals, often clashing with Dr. Thorne over his increasingly commercial decisions.",
-      "personality_style": "stoic, passionate, controlled anger",
+      "id": "aris_thorne",
+      "name": "Dr. Aris Thorne",
+      "bio": "A disgraced astro-archaeologist, once highly respected, whose career was shattered years ago. He is a fellow passenger on this cruise, seemingly by chance.",
+      "personality_style": "Bitter, calculating, outwardly calm but with an undercurrent of intense resentment.",
       "is_guilty": true,
       "knowledge_sentences": [
-        "Dr. Thorne was planning to sell Harmony Haven to a giant pharmaceutical company, which would have turned it into a testing facility.",
-        "I was in my lab all evening, from about 8 PM until midnight, working on a crucial vaccine trial for the new tiger cubs.",
-        "I have access to all the animal medications, naturally, including the large animal tranquilizers, but they are strictly logged.",
-        "I saw Marcus O'Connell near the main gates around 7 PM, looking agitated, almost like he was waiting for someone.",
-        "Thorne had just fired Old Man Hemlock, our best animal trainer and my mentor, without explanation. It was a clear sign of his ruthlessness.",
-        "I know the exact dosage of tranquilizer needed to incapacitate a large lion, or even a human, if misapplied.",
-        "I left my lab briefly around 11 PM to get a specific reagent from the supply closet, which is quite close to Dr. Thorne's office."
+        "I was in the observation lounge from 18:00 to 19:00, enjoying the nebula view, quite stunning.",
+        "After that, I returned to my cabin to review some old research notes until around 22:00. I believe I saw Ms. Vance near Lord Volkov's suite around 21:30.",
+        "I went to the ship's hydroponic garden for a walk from 22:00 to 23:00, seeking a quiet place to reflect. I saw Captain Rostova heading towards the bridge around 22:30, looking distressed.",
+        "Volkov was a thief, a charlatan! He built his empire on the backs of others, including mine. He stole my Chrysalis Nebula research and published it as his own.",
+        "I heard Lord Volkov usually takes a nutrient paste before bed. He was quite particular about his health regimen.",
+        "I overheard Ms. Vance arguing with Volkov in the dining hall yesterday, something about 'being careful' and 'risking everything.'",
+        "The security chief mentioned to me that Volkov's suite had a specific air filtration system, very high-tech, but not foolproof.",
+        "I did not enter Lord Volkov's suite at any point yesterday evening. I had no reason to.",
+        "That neurotoxin, 'Nyx's Kiss'? It's a highly restricted compound, nearly undetectable in small doses, making it perfect for silent assassinations."
       ],
       "timeline": {
-        "18:00": "Completing evening rounds in the primate house.",
-        "19:00": "In the veterinary clinic, reviewing case files.",
-        "20:00": "Entered my personal lab to begin work on the tiger cub vaccine.",
-        "21:00": "Deep in experimental vaccine development in the lab.",
-        "22:00": "Still in the lab, growing increasingly frustrated by thoughts of Dr. Thorne's plans.",
-        "23:00": "Confronted Dr. Thorne in his office about the sanctuary's sale. Argument ensued.",
-        "00:00": "Returned to my lab, attempting to appear busy with 'paperwork'."
+        "18:00": "Observation Lounge",
+        "19:00": "Returned to his cabin to review research notes",
+        "20:00": "Still in his cabin, reviewing notes",
+        "21:00": "Still in his cabin, saw Ms. Vance near Volkov's suite at 21:30",
+        "22:00": "Hydroponic Garden (entered at 22:00, saw Captain Rostova around 22:30)",
+        "23:00": "Still in Hydroponic Garden",
+        "00:00": "Returned to his cabin"
       },
       "prefixes": [
-        "(Elara sighs, crossing her arms) ",
-        "(With a sharp look) ",
-        "(Her voice is low, but firm) "
+        "The truth is complicated...",
+        "You should look closer at..."
       ],
       "suffixes": [
-        ", and that's the truth.",
-        ". My conscience is clear.",
-        ". I have nothing more to say."
+        "...but I have nothing to hide.",
+        "...everyone has secrets on this ship."
       ],
-      "defense_statement": "Accuse me? You clearly don't understand the depth of my dedication to these animals! I would never harm Dr. Thorne, despite our disagreements. You're wasting time while the real threat to Harmony Haven remains.",
-      "fallback_statement": "I'm not sure what you're asking. I've told you everything I know."
+      "defense_statement": "You accuse me? After all Volkov did to me? Revenge, perhaps, but not murder. I am innocent!",
+      "fallback_statement": "I've told you everything I know. My mind is focused on my own ruined career, not the sordid affairs of others."
     },
     {
-      "id": "marcus_oconnell",
-      "name": "Marcus 'Mac' O'Connell",
-      "bio": "The gruff but big-hearted Grounds Manager. Mac is fiercely loyal to the animals but harbors a secret gambling problem that Dr. Thorne was aware of.",
-      "personality_style": "gruff, anxious, easily flustered",
+      "id": "elara_vance",
+      "name": "Ms. Elara Vance",
+      "bio": "Lord Volkov's sharp and efficient personal assistant. She was often seen with him and managed his complicated schedule with precision.",
+      "personality_style": "Composed, guarded, slightly defensive but eager to appear helpful.",
       "is_guilty": false,
       "knowledge_sentences": [
-        "I saw Elara Vance heading towards Dr. Thorne's office just after 11 PM, looking like a storm cloud had just broken loose.",
-        "Dr. Thorne had lent me a significant sum of money, and he was threatening to expose my debts if I didn't pay up by the end of the month.",
-        "I heard whispers that Thorne was planning to sell the sanctuary off. It would be a disaster for all of us, especially the animals.",
-        "I was checking the north perimeter fences for most of the evening, a routine patrol, then went back to my cabin around 10:30 PM.",
-        "The tranquilizer dart gun is kept under lock and key in the vet clinic. Only Elara and Dr. Thorne had keys to that cabinet.",
-        "Earlier in the evening, around 9 PM, I heard a heated phone conversation coming from Thorne's office through an open window.",
-        "Serena Dubois always seemed to be in Dr. Thorne's good graces, but I saw her looking quite distraught after leaving his office earlier in the night."
+        "I was with Lord Volkov in his suite until 19:00, finalizing his presentation for the next port. We were working on the 'Chrysalis Nebula Artifacts' paper.",
+        "From 19:00 to 21:00, I was in the ship's data archives, cross-referencing some old celestial maps for Lord Volkov.",
+        "I briefly visited Lord Volkov's suite again at 21:30 to drop off a data chip. He seemed fine, a bit tired, preparing for his nightly nutrient paste.",
+        "After leaving his suite, I went to the crew lounge for a quick meal from 21:45 until 22:30. I saw some of the bridge crew there.",
+        "I saw Dr. Thorne enter the hydroponic garden area around 22:00. He always seemed to be lurking around, observing people.",
+        "Lord Volkov had many rivals. He often stepped on toes to get what he wanted. He was currently embroiled in a dispute with Captain Rostova over some unauthorized modifications to his suite's environmental controls.",
+        "I heard the captain was quite upset that Lord Volkov had a private oxygen filtration system installed, against ship regulations.",
+        "I was quite fond of Lord Volkov, despite his difficult personality. He promised me a significant share of his next major discovery.",
+        "I realized I left my access keycard for Lord Volkov's suite *inside* when I dropped off the data chip at 21:30. I didn't realize until much later and couldn't go back for it."
       ],
       "timeline": {
-        "18:00": "Finishing repairs on the rhino enclosure's feeding mechanism.",
-        "19:00": "Ate a quick dinner in the staff canteen, then headed towards my cabin.",
-        "20:00": "In my cabin, attempting to make a discreet phone call about my debts.",
-        "21:00": "On patrol, checking perimeter fences near the north section.",
-        "22:00": "Decided to try and sneak a look in Thorne's office for a chance at some cash.",
-        "23:00": "Lurking near Thorne's office, saw Elara approach. Overheard muffled voices and ducked away.",
-        "00:00": "Back in my cabin, unable to sleep, pacing anxiously."
+        "18:00": "Lord Volkov's suite, working",
+        "19:00": "Ship's data archives",
+        "20:00": "Still in ship's data archives",
+        "21:00": "Ship's data archives, then briefly to Volkov's suite at 21:30",
+        "22:00": "Crew lounge (from 21:45)",
+        "23:00": "Returned to her cabin after 22:30",
+        "00:00": "In her cabin"
       },
       "prefixes": [
-        "(Mac rubs his neck nervously) ",
-        "(He clears his throat) ",
-        "(Slightly defensive) "
+        "I'm doing my best to help.",
+        "It's all very upsetting..."
       ],
       "suffixes": [
-        ", that's all I know.",
-        ". Don't twist my words.",
-        ". Just trying to be helpful."
+        "...but I really didn't see anything unusual.",
+        "...Volkov was a complicated man."
       ],
-      "defense_statement": "Me? A killer? You got the wrong man! I love these animals more than anything, and Thorne was a pain, but not worth murder! You should be looking at who had the motive and the means to use that dart gun.",
-      "fallback_statement": "Look, I'm just a groundskeeper. I don't know anything about that."
+      "defense_statement": "I respected Lord Volkov. My alibi is solid, and I had nothing to gain from his death that I wouldn't have gained otherwise.",
+      "fallback_statement": "I've told you everything I know about Lord Volkov's final hours. My focus is on ensuring his legacy is preserved."
     },
     {
-      "id": "serena_dubois",
-      "name": "Serena Dubois",
-      "bio": "Dr. Thorne's polished and ambitious personal assistant. Serena handled all of Thorne's appointments and communications, but recent financial troubles have made her desperate.",
-      "personality_style": "poised, slightly condescending, careful",
+      "id": "eva_rostova",
+      "name": "Captain Eva Rostova",
+      "bio": "The no-nonsense captain of 'The Celestial Empress.' She runs a tight ship and dislikes any disruption to her carefully ordered routines or regulations.",
+      "personality_style": "Authoritative, stern, concerned with ship's protocols and reputation.",
       "is_guilty": false,
       "knowledge_sentences": [
-        "Dr. Thorne called me into his office for a 'very urgent, confidential discussion' around 10 PM. He seemed agitated about 'disloyal elements'.",
-        "I saw Marcus O'Connell loitering suspiciously near the main building's staff entrance just after I left Dr. Thorne's office, probably around 10:30 PM.",
-        "I was in the main office all evening, wrapping up urgent marketing reports for Dr. Thorne until about 10 PM, then went back to my cottage.",
-        "Dr. Thorne had just secured a very large, confidential deal, which he was quite pleased about, but he wouldn't tell me the details.",
-        "I overheard Elara Vance having a very intense conversation on the phone earlier in the evening, complaining about Dr. Thorne's decisions.",
-        "The dart gun in the vet clinic is highly controlled. I know for a fact Dr. Thorne sometimes carried a spare key for emergencies.",
-        "Dr. Thorne had been reviewing my financial reports very closely recently, asking some uncomfortable questions about my expenses."
+        "I was on the bridge from 18:00 to 20:00, overseeing standard warp-drive maintenance checks. Commander Kael can confirm my presence.",
+        "From 20:00 to 22:00, I was conducting a routine security sweep of Decks 3 through 5, including cargo bays. It's part of my nightly rounds.",
+        "Around 22:30, I made a detour to the hydroponic garden for a brief moment of quiet before returning to the bridge. I distinctly saw Dr. Thorne there.",
+        "I found Lord Volkov's suite access keycard near the hydroponic garden entrance just before 23:00. It's an odd place for it.",
+        "I had a heated discussion with Lord Volkov earlier that day. He insisted on installing an unauthorized supplemental oxygen system in his suite, a serious breach of safety protocols.",
+        "Volkov was threatening to report me to the interstellar admiralty for 'harassment' if I didn't comply. He had a lot of influence.",
+        "I saw Ms. Vance leaving the crew lounge around 22:30, she looked quite flustered, perhaps after an argument.",
+        "The ship's logs show an unscheduled maintenance access to Lord Volkov's suite's environmental controls at precisely 21:50, but it wasn't authorized by my engineering team.",
+        "I don't know anything about poisons. My concern is the safety of my ship and its passengers, not clandestine toxins."
       ],
       "timeline": {
-        "18:00": "At her desk in the main office, finalizing reports for the next day.",
-        "19:00": "Ordered dinner to her office, continuing to work on presentations.",
-        "20:00": "In the main office, preparing the social media schedule for the sanctuary.",
-        "21:00": "Received a cryptic and unsettling email, causing her to worry.",
-        "22:00": "Met Dr. Thorne in his office after he called her in for an urgent discussion.",
-        "23:00": "Back in her cottage, trying to process the intense conversation with Dr. Thorne.",
-        "00:00": "Still awake in her cottage, scrolling aimlessly on her phone, unable to sleep."
+        "18:00": "Bridge, overseeing maintenance",
+        "19:00": "Bridge",
+        "20:00": "Security sweep of Decks 3-5",
+        "21:00": "Still on security sweep",
+        "22:00": "Finished sweep, detour to hydroponic garden (around 22:30, saw Dr. Thorne), found keycard before 23:00",
+        "23:00": "Returned to the bridge",
+        "00:00": "Still on the bridge"
       },
       "prefixes": [
-        "(Serena smiles thinly) ",
-        "(She adjusts her glasses) ",
-        "(In a measured tone) "
+        "My primary concern is the ship's safety.",
+        "I operate by the book..."
       ],
       "suffixes": [
-        ". That's all I recall.",
-        ". I hope that helps.",
-        ". Anything else?"
+        "...and this murder is a grave disruption.",
+        "...no one is above the law, not even Lord Volkov."
       ],
-      "defense_statement": "How dare you! I was Dr. Thorne's most trusted confidante! I had no reason to harm him. He was a difficult man, yes, but I valued my position. You should focus on those with a clearer motive.",
-      "fallback_statement": "I'm afraid I don't have any information on that particular subject."
+      "defense_statement": "My duty is to this vessel and its passengers. I had a disagreement with Volkov, yes, but I uphold the law, I don't break it by committing murder.",
+      "fallback_statement": "I have given you all relevant information from my perspective. My focus is now on ensuring the integrity of this investigation."
     }
   ]
 }

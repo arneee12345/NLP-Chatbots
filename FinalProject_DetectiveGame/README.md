@@ -37,14 +37,16 @@ python -m spacy download en_core_web_md
 ```
 
 ### 4. API Configuration
-To use the generator feature, you need a Google Gemini API Key (it's free on https://aistudio.google.com/api-keys).
+To use the generator feature (creating new mysteries), you need a Google Gemini API Key.
 
-1.  Open `src/generator.py`.
-2.  Paste your key into the `API_KEY` variable.
-3.  *(If you do not have a key, you can still play the last generated case in "Offline Mode".)*
+1.  Get a free key from [Google AI Studio](https://aistudio.google.com/app/apikey).
+2.  Start the game (see "How to Run" below).
+3.  When you select **"Generate NEW Mystery"**, the game will ask you to paste your key. It will be saved securely for future sessions.
+
+*(If you do not have a key, you can still play the last generated case in "Offline Mode".)*
 
 ## 📚 Detailed Documentation
-For a comprehensive breakdown of the development process and the logic sketch please see the **Project/Process Documentation**.
+For a comprehensive breakdown of the development process and the logic sketch please see the project folder: **docs**.
 
 ## 🚀 How to Run
 
@@ -53,6 +55,9 @@ To start the investigation, simply run the main script:
 ```bash
 python main.py
 ```
+
+**First Time Setup:**
+If this is your first time generating a story, the terminal will prompt you to enter your **API Key**. Simply paste it when asked.
 
 You will now see a Start Menu where you can choose to:
 * **Play Current Mystery** (Load the existing save file).
@@ -87,16 +92,13 @@ When you think you know the truth:
 
 * **Python:** Core logic and game loop management.
 * **Google Gemini (GenAI):** Dynamic generation of narratives, characters, and logic structure.
-* **spaCy:** Natural Language Processing (Tokenization, Lemmatization, Cosine Similarity) for dialogue matching.
+* **spaCy:** Natural Language Processing (Tokenization, Lemmatization, Cosine Similarity, NLU, Intent Analysis) for dialogue matching.
 * **Rich:** Library for terminal formatting, colors, and panels to create an immersive UI.
 
 ## 🤖 Statement on AI Usage
 
-In accordance with course guidelines, I used AI tools in the following capacity for this project:
+I used AI tools in the following capacity for this project:
 
-* **Concept Generation:** I used Large Language Models to brainstorm the JSON structure required to make a mystery "solvable" by a computer.
-* **Coding Assistance:** AI was used as a "pair programmer" to help refactor the code into a modular structure (separating `nlp.py` from `main.py`) and to debug the Google Gemini API integration.
+* **Coding Assistance:** AI was sometimes used to debug (especially with the API Integration) and help formatting the code nicely.
 * **Core Feature:** The project explicitly uses Generative AI (Gemini API) as a feature to create the story content dynamically.
 * **Documentation:** AI assisted in formatting this README and structuring the documentation for clarity.
-
-All logic regarding the `DetectiveBrain` and the implementation of cosine similarity was manually reviewed and understood to ensure it aligns with the course curriculum.

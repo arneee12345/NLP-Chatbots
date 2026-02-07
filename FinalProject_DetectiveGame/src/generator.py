@@ -4,15 +4,28 @@ from google import genai
 from google.genai import types
 
 import os
-from dotenv import load_dotenv
+from dotenv import load_dotenv, set_key
 
-# Load the hidden .env file
-load_dotenv()
+# Define the .env file path
+env_file = ".env"
+load_dotenv(env_file)
 
 API_KEY = os.getenv("GEMINI_API_KEY")
 
+# If the key is missing, ask the user for it
 if not API_KEY:
-    raise ValueError("No API Key found! Make sure you have a .env file with GEMINI_API_KEY.")
+    print("\n⚠️  No API Key found. To generate new mysteries, you need a Google Gemini Key.")
+    print("   (Get one for free at: https://aistudio.google.com/app/apikey)")
+    user_key = input("👉 Please paste your API Key here (or press Enter for Offline Mode): ").strip()
+    
+    if user_key:
+        # Create the .env file and save the key
+        with open(env_file, "w") as f:
+            f.write(f"GEMINI_API_KEY={user_key}")
+        print("✅ Key saved! Restarting configuration...")
+        API_KEY = user_key
+    else:
+        print("running in OFFLINE mode.")
 
 
 OUTPUT_FILE = "data/scenario_generated.json"
