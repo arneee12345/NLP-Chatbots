@@ -27,16 +27,10 @@ Navigate to the project folder and run:
 
 ```bash
 pip install -r requirements.txt
-```
-
-### 3. Download the Language Brain
-This project uses spaCy's medium English model (`en_core_web_md`) for vector similarity. You must run this command for the game to work:
-
-```bash
 python -m spacy download en_core_web_md
 ```
 
-### 4. API Configuration
+### 3. API Configuration
 To use the generator feature (creating new mysteries), you need a Google Gemini API Key.
 
 1.  Get a free key from [Google AI Studio](https://aistudio.google.com/app/apikey).
